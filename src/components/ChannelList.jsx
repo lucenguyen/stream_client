@@ -8,7 +8,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
             onSendData(channel)
         }
         else {
-            navigate(`/stream_client/${channel.id}`)
+            navigate(`/${channel.id}`)
         }
     }
     return (
