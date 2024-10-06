@@ -43,7 +43,7 @@ function StreamChannel() {
     }, [channels, id]);
     const selectedChannelEvent = (channel) => {
         if (channel) {
-            navigate(`/${channel.id}`);
+            navigate(`/stream_client/${channel.id}`);
         }
     }
 
