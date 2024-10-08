@@ -25,8 +25,8 @@ function StreamChannel() {
                 channel: channel.name,
                 token: "test"
             };
-            await StreamChannelAPI.startStreamChannel(body);
-            setSourceLive(`https://sexy68.com/api/m3u8/${channel.name.replace(" ", "_")}.m3u8`)
+            const response = await StreamChannelAPI.startStreamChannel(body);
+            setSourceLive(`https://sexy68.com/api/m3u8/${response.data}.m3u8`)
         } catch (error) {
             console.error("Error starting stream channel:", error);
         }
