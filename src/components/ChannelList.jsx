@@ -14,7 +14,11 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
     return (
         <>
             <Card>
-                <Card.Header>Channel list</Card.Header>
+                {channels.length !== 0 ? (
+                    <Card.Header>{channels[0].groud}</Card.Header>
+                ) : (
+                    <Card.Header>Chanel List</Card.Header>
+                )}
                 <div style={{'maxHeight': scroll ? '70vh' : '100%','overflowY': 'auto'}}>
                     <ListGroup variant="flush">
                         {channels.map((channel) => {
