@@ -6,7 +6,7 @@
   "streamUrl" : "https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-62d15f16001c04178f555e40.m3u8?X-Plex-Token=9LBv-R8LnEnGYm5Pvi4w"
 }, {
   "name" : "FanDuel TV Extra",
-  "group" : "anime",
+  "group" : "Sports",
   "logo" : "https://provider-static.plex.tv/6/epg/channels/logos/gracenote/6c9e8fd772654873d22c966ec124ea02.png",
   "id" : 2,
   "streamUrl" : "https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-64e9f17c7511e20e999d6c34.m3u8?X-Plex-Token=9LBv-R8LnEnGYm5Pvi4w"
@@ -18,13 +18,13 @@
   "streamUrl" : "https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-5fc705f68aba71002d8b7b37.m3u8?X-Plex-Token=9LBv-R8LnEnGYm5Pvi4w"
 }, {
   "name" : "HBCUGO SPORTS",
-  "group" : "Anime",
+  "group" : "Sports",
   "logo" : "https://provider-static.plex.tv/e/epg/channels/logos/gracenote/ef631804cdf478bca5ba96eaee4bc241.png",
   "id" : 4,
   "streamUrl" : "https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-631a212e82b744e0309aa56e.m3u8?X-Plex-Token=9LBv-R8LnEnGYm5Pvi4w"
 }, {
   "name" : "MSG SportsZone",
-  "group" : "Anime",
+  "group" : "Sports",
   "logo" : "https://provider-static.plex.tv/6/epg/channels/logos/gracenote/6786da65a6db13732b7b580755932165.png",
   "id" : 5,
   "streamUrl" : "https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-63b5df3f27159bc9de3062aa.m3u8?X-Plex-Token=9LBv-R8LnEnGYm5Pvi4w"
