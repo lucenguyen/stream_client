@@ -11,31 +11,40 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
             navigate(`/stream_client/${channel.id}`)
         }
     }
+
+    let groupedArray = channels.reduce((acc, item) => {
+        if (!acc[item.group]) {
+            acc[item.group] = [];
+        }
+        acc[item.group].push(item);
+        return acc;
+    },{});
+            
     return (
         <>
-            <Card>
-                {/* {channels.length !== 0 ? (
-                    <Card.Header>{channels[0].groud}</Card.Header>
-                ) : (
-                    <Card.Header>Chanel List</Card.Header>
-                )} */}
-                <Card.Header>Sports</Card.Header>
-                <div style={{'maxHeight': scroll ? '70vh' : '100%','overflowY': 'auto'}}>
-                    <ListGroup variant="flush">
-                        {channels.map((channel) => {
-                            return <ListGroup.Item action
-                                                   key={channel.id}
-                                                   active={channel === selectedChannel}
-                                                   onClick={() => selectChannel(channel)}
-                            >
-                                <Link to={`/${channel.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                                    {channel.name}
-                                </Link>
-                            </ListGroup.Item>
-                        })}
-                    </ListGroup>
-                </div>
-            </Card>
+            {
+                Object.keys(groupedArray).map((group) => (
+                    <Card key={group} className="mb-5">
+                        <Card.Header className="fs-3">{group}</Card.Header>
+                        <div style={{'maxHeight': scroll ? '400px' : '100%','overflowY': 'auto'}}>
+                            <ListGroup variant="flush">
+                                {groupedArray[group].map((channel) => {
+                                    return <ListGroup.Item action
+                                                        key={channel.id}
+                                                        active={channel === selectedChannel}
+                                                        onClick={() => selectChannel(channel)}
+                                    >
+                                        <Link to={`/${channel.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
+                                            {channel.id}. {channel.name}
+                                        </Link>
+                                    </ListGroup.Item>
+                                })}
+                            </ListGroup>
+                        </div>
+                    </Card>
+                ))
+            }
+      
         </>
     )
 }

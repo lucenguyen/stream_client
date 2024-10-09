@@ -19,8 +19,8 @@ function Home() {
     }, [])
     return (
         <>
-            <div  className="m-lg-5">
-                <ChannelList channels={channels.length !== 0 ? channels : fakeData} scroll={true}/>
+            <div  className="m-lg-5" style={{'maxWidth': '70%'}}>
+                <ChannelList channels={channels} scroll={true}/>
             </div>
         </>
     )

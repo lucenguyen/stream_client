@@ -54,7 +54,7 @@ function StreamChannel() {
                     <ClapprPlayer
                         source={sourceLive}/>
                 </div>
-                <div className="col-3">
+                <div className="col-3 mx-2">
                     <ChannelList channels={channels} scroll={true} selectedChannel={selectedChannel}
                                  onSendData={selectedChannelEvent}/>
                 </div>

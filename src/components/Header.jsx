@@ -10,12 +10,6 @@ function Header(){
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
-                            {/* <Nav.Link href="stream_client/">About Us</Nav.Link> */}
-                        </Nav>
-                        <Nav>
-                            <Button variant="dark" className="btn btn-outline-light me-2">Contact Us</Button>
-                            <Button variant="success" className="btn btn-success me-2">Join Our Discord</Button>
-                            <Button variant="primary" className="btn btn-primary">Subscribe Now</Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
