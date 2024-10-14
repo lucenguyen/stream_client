@@ -1,9 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Clappr from 'clappr';
 import '../App.css';
+import './ClapprPlayer.css';
 
 const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
     const playerRef = useRef(null);
+    const [isplay, setIsplay] = useState(false);
     useEffect(() => {
         // Kiểm tra xem playerRef đã tồn tại chưa
         if (!playerRef.current) return;
@@ -16,20 +18,15 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
             mute: true,
             width: width,
             height: height,
-
         });
-        // Bắt sự kiện khi video bắt đầu phát, ẩn background
         player.on(Clappr.Events.PLAYER_PLAY, () => {
-            // setSrc(source);
+            setIsplay(true);
         });
-
-        // Bắt sự kiện khi video bị tạm dừng hoặc dừng, hiển thị background
         player.on(Clappr.Events.PLAYER_PAUSE, () => {
-            // setSrc(source);
+            setIsplay(false);
         });
-
         player.on(Clappr.Events.PLAYER_STOP, () => {
-            // setIsPlaying(false);
+            setIsplay(false);
         });
         // Cleanup: hủy player khi component unmount
         return () => {
@@ -38,8 +35,16 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
     }, [source, width, height]); // Gọi lại khi source, width hoặc height thay đổi
 
     return (
-        <div>
-            <div ref={playerRef} />
+        <div className='container_clappr'>
+            {!isplay ? (
+                <div className='cc_bgr' style={{
+                    backgroundImage: `url(${img})`, 
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}></div>
+            ) : ''}
+
+            <div className={!isplay ? 'loadding' : ''} ref={playerRef} />
         </div>
     )
 };

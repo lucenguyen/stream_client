@@ -1,0 +1,11 @@
+.container_clappr {
+    position: relative;
+}
+.cc_bgr {
+    position: absolute;
+    width: 100%;
+    height: 70vh;
+}
+.loadding {
+    opacity: 0.5;
+}
