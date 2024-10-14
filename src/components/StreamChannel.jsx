@@ -11,6 +11,7 @@ function StreamChannel() {
     const [channels, setChannels] = useState([]);
     const [selectedChannel, setSelectedChannel] = useState();
     const [sourceLive, setSourceLive] = useState();
+    const [logo, setLogo] = useState();
     const getChannels = async () => {
         try {
             const response = await channelListAPI.getChannelList();
@@ -37,11 +38,12 @@ function StreamChannel() {
     useEffect(() => {
         const channel = channels.find((channel) => channel.id.toString() === id);
         if (channel) {
+            setLogo(channel.logo);
             setSelectedChannel(channel);
             startStreamChannel(channel);
         }
     }, [channels, id]);
-    const selectedChannelEvent = (channel) => {
+    const selectedChannelEvent = (channel) => {        
         if (channel) {
             navigate(`/stream_client/${channel.id}`);
         }
@@ -52,7 +54,7 @@ function StreamChannel() {
             <div className="m-lg-5 d-flex">
                 <div className="col-9">
                     <ClapprPlayer
-                        source={sourceLive}/>
+                        source={sourceLive} img={logo}/>
                 </div>
                 <div className="col-3 mx-2">
                     <ChannelList channels={channels} scroll={true} selectedChannel={selectedChannel}
