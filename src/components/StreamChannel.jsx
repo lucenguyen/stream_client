@@ -4,6 +4,7 @@ import ChannelList from "./ChannelList";
 import ClapprPlayer from "./ClapprPlayer";
 import channelListAPI from "../api/ChannelListAPI";
 import StreamChannelAPI from "../api/StreamChannelAPI";
+import moment from "moment";
 
 function StreamChannel() {
     const {id} = useParams();
@@ -12,6 +13,7 @@ function StreamChannel() {
     const [selectedChannel, setSelectedChannel] = useState();
     const [sourceLive, setSourceLive] = useState();
     const [logo, setLogo] = useState();
+    const [listChannel, setListChannel] = useState();
     const getChannels = async () => {
         try {
             const response = await channelListAPI.getChannelList();
@@ -38,6 +40,8 @@ function StreamChannel() {
     useEffect(() => {
         const channel = channels.find((channel) => channel.id.toString() === id);
         if (channel) {
+            console.log(channel);
+            setListChannel(channel);
             setLogo(channel.logo);
             setSelectedChannel(channel);
             startStreamChannel(channel);
@@ -53,8 +57,14 @@ function StreamChannel() {
         <>
             <div className="m-lg-5 d-flex">
                 <div className="col-9">
+                        <h2>
+                            {listChannel?.name} 
+                        </h2>
+                    {listChannel && listChannel.time ?
+                     <div className="mb-3">Start Time: {moment.utc(listChannel.time).local().format('YYYY-MM-DD HH:mm:ss A')}</div> : ''
+                    }
                     <ClapprPlayer
-                        source={sourceLive} img={logo}/>
+                        source={sourceLive} img={listChannel && logo}/>
                 </div>
                 <div className="col-3 mx-2">
                     <ChannelList channels={channels} scroll={true} selectedChannel={selectedChannel}

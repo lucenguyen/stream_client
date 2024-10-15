@@ -1,3 +1,4 @@
+import moment from "moment";
 import {Card, ListGroup} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
 
@@ -11,7 +12,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
             navigate(`/stream_client/${channel.id}`)
         }
     }
-
+    
     let groupedArray = channels.reduce((acc, item) => {
         if (!acc[item.group]) {
             acc[item.group] = [];
@@ -19,7 +20,6 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
         acc[item.group].push(item);
         return acc;
     },{});
-            
     return (
         <>
             {
@@ -35,7 +35,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
                                                         onClick={() => selectChannel(channel)}
                                     >
                                         <Link to={`/${channel.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                                            {channel.id}. {channel.name}
+                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY-MM-DD HH:mm:ss A')}` : ''}
                                         </Link>
                                     </ListGroup.Item>
                                 })}

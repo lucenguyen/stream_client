@@ -14,20 +14,27 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
         const player = new Clappr.Player({
             source: source,
             parent: playerRef.current,
+            parentId: '#player',
             autoPlay: true,
             mute: true,
             width: width,
             height: height,
+            disableErrorScreen: true,
+            poster: `${img}`
         });
-        player.on(Clappr.Events.PLAYER_PLAY, () => {
-            setIsplay(true);
-        });
-        player.on(Clappr.Events.PLAYER_PAUSE, () => {
-            setIsplay(false);
-        });
-        player.on(Clappr.Events.PLAYER_STOP, () => {
-            setIsplay(false);
-        });
+
+        // player.on(Clappr.Events.PLAYER_PLAY, () => {
+        //     setIsplay(true);
+        // });
+        // player.on(Clappr.Events.PLAYER_PAUSE, () => {
+        //     setIsplay(false);
+        // });
+        // player.on(Clappr.Events.PLAYER_STOP, () => {
+        //     setIsplay(false);
+        // });
+        // player.on(Clappr.Events.PLAYER_ERROR , () => {
+        //     setIsplay(false);
+        // });
         // Cleanup: hủy player khi component unmount
         return () => {
             player.destroy();
@@ -35,16 +42,8 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
     }, [source, width, height]); // Gọi lại khi source, width hoặc height thay đổi
 
     return (
-        <div className='container_clappr'>
-            {!isplay ? (
-                <div className='cc_bgr' style={{
-                    backgroundImage: `url(${img})`, 
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}></div>
-            ) : ''}
-
-            <div className={!isplay ? 'loadding' : ''} ref={playerRef} />
+        <div id='player' className='container_clappr'>
+            {img !== '' ? <div ref={playerRef} /> :  ''}
         </div>
     )
 };
