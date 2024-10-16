@@ -16,7 +16,7 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
             parent: playerRef.current,
             parentId: '#player',
             autoPlay: true,
-            mute: true,
+            mute: false,
             width: width,
             height: height,
             disableErrorScreen: true,

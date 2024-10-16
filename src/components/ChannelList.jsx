@@ -35,7 +35,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
                                                         onClick={() => selectChannel(channel)}
                                     >
                                         <Link to={`/${channel.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY-MM-DD HH:mm:ss A')}` : ''}
+                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY/MM/DD HH:mm:ss A [GMT]Z')}` : ''}
                                         </Link>
                                     </ListGroup.Item>
                                 })}
