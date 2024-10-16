@@ -29,7 +29,7 @@ function StreamChannel() {
                 token: "test"
             };
             const response = await StreamChannelAPI.startStreamChannel(body);
-            setSourceLive(`https://sexy68.com/api/m3u8/${response.data}.m3u8`)
+            setSourceLive(`https://start-stream.hakinam2701.workers.dev/${response.data}.m3u8`)
         } catch (error) {
             console.error("Error starting stream channel:", error);
         }
@@ -44,10 +44,12 @@ function StreamChannel() {
             setListChannel(channel);
             setLogo(channel.logo);
             setSelectedChannel(channel);
-            startStreamChannel(channel);
+            if (selectedChannel?.id !== channel.id) {
+                startStreamChannel(channel);
+            }
         }
     }, [channels, id]);
-    const selectedChannelEvent = (channel) => {        
+    const selectedChannelEvent = (channel) => {
         if (channel) {
             navigate(`/stream_client/${channel.id}`);
         }
@@ -57,11 +59,12 @@ function StreamChannel() {
         <>
             <div className="m-lg-5 d-flex">
                 <div className="col-9">
-                        <h2>
-                            {listChannel?.name} 
-                        </h2>
+                    <h2>
+                        {listChannel?.name}
+                    </h2>
                     {listChannel && listChannel.time ?
-                     <div className="mb-3">Start Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD HH:mm:ss A [GMT]Z')}</div> : ''
+                        <div className="mb-3">Start
+                            Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD HH:mm:ss A [GMT]Z')}</div> : ''
                     }
                     <ClapprPlayer
                         source={sourceLive} img={listChannel && logo}/>
