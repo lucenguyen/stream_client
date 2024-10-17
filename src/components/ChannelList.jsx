@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment-timezone';
 import {Card, ListGroup} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
 
@@ -35,7 +35,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
                                                         onClick={() => selectChannel(channel)}
                                     >
                                         <Link to={`/${channel.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY/MM/DD HH:mm:ss A [GMT]Z')}` : ''}
+                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY/MM/DD, HH:mm:ss A [GMT]Z z')}` : ''}
                                         </Link>
                                     </ListGroup.Item>
                                 })}

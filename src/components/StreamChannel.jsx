@@ -4,7 +4,7 @@ import ChannelList from "./ChannelList";
 import ClapprPlayer from "./ClapprPlayer";
 import channelListAPI from "../api/ChannelListAPI";
 import StreamChannelAPI from "../api/StreamChannelAPI";
-import moment from "moment";
+import moment from 'moment-timezone';
 
 function StreamChannel() {
     const {id} = useParams();
@@ -40,7 +40,6 @@ function StreamChannel() {
     useEffect(() => {
         const channel = channels.find((channel) => channel.id.toString() === id);
         if (channel) {
-            console.log(channel);
             setListChannel(channel);
             setLogo(channel.logo);
             setSelectedChannel(channel);
@@ -64,7 +63,7 @@ function StreamChannel() {
                     </h2>
                     {listChannel && listChannel.time ?
                         <div className="mb-3">Start
-                            Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD HH:mm:ss A [GMT]Z')}</div> : ''
+                            Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD, HH:mm:ss A [GMT]Z z')}</div> : ''
                     }
                     <ClapprPlayer
                         source={sourceLive} img={listChannel && logo}/>

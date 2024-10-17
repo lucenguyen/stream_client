@@ -42,8 +42,8 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
     }, [source, width, height]); // Gọi lại khi source, width hoặc height thay đổi
 
     return (
-        <div id='player' className='container_clappr'>
-            {img !== '' ? <div ref={playerRef} /> :  ''}
+        <div>
+            {img !== '' ? <div id='player' ref={playerRef} /> :  ''}
         </div>
     )
 };
