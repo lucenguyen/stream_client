@@ -20,6 +20,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
         acc[item.group].push(item);
         return acc;
     },{});
+    
     return (
         <>
             {
@@ -35,7 +36,7 @@ function ChannelList({channels, selectedChannel,scroll, onSendData}) {
                                                         onClick={() => selectChannel(channel)}
                                     >
                                         <Link to={`/${channel.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY/MM/DD, HH:mm:ss A [GMT]Z z')}` : ''}
+                                            {channel.name} {channel.time ? `: ${moment.utc(channel.time).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                         </Link>
                                     </ListGroup.Item>
                                 })}

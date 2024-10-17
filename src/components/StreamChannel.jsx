@@ -63,7 +63,7 @@ function StreamChannel() {
                     </h2>
                     {listChannel && listChannel.time ?
                         <div className="mb-3">Start
-                            Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD, HH:mm:ss A [GMT]Z z')}</div> : ''
+                            Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD, HH:mm:ss A [UTC]Z z')} {moment.tz.guess()}</div> : ''
                     }
                     <ClapprPlayer
                         source={sourceLive} img={listChannel && logo}/>
