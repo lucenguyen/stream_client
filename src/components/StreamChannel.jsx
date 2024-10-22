@@ -29,7 +29,7 @@ function StreamChannel() {
                 token: "test"
             };
             const response = await StreamChannelAPI.startStreamChannel(body);
-            setSourceLive(`https://start-stream.hakinam2701.workers.dev/${response.data}.m3u8`)
+            setSourceLive(`https://start-stream.hakinam2701.workers.dev/${response.data}/${response.data}.m3u8`)
         } catch (error) {
             console.error("Error starting stream channel:", error);
         }
