@@ -19,7 +19,7 @@
 }
 
 .player-poster[data-poster] .play-wrapper[data-poster] svg path {
-    fill: #cdc5c5;
+    fill: aqua;
 }
 .spinner-three-bounce[data-spinner] > div {
     background-color: aqua;

@@ -30,6 +30,8 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
         //     setIsplay(false);
         // });
         // player.on(Clappr.Events.PLAYER_STOP, () => {
+        //     console.log('stop');
+            
         //     setIsplay(false);
         // });
         // player.on(Clappr.Events.PLAYER_ERROR , () => {
