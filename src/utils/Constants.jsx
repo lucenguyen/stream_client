@@ -8,11 +8,7 @@ export const router = createBrowserRouter([
         element: <Home></Home>
     },
     {
-        path: "stream_client/",
-        element: <Home></Home>
-    },
-    {
-        path: "stream_client/:id",
+        path: "stream/:id",
         element: <StreamChannel></StreamChannel>
     },
     {
