@@ -13,7 +13,7 @@ function StreamChannel() {
     const [sourceLive, setSourceLive] = useState();
     const [logo, setLogo] = useState();
     const [listChannel, setListChannel] = useState();
-    const [isChannel, setIsChannel] = useState(false);
+    const [isChannel, setIsChannel] = useState(true);
     const channels = useSelector((state) => state.channels);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -43,6 +43,7 @@ function StreamChannel() {
                 prog.id = idProg++;
             }
             channel.programmes = programmes;
+            console.log(programmes)
             setSelectedChannel(channel);
             setSourceLive(`https://start-stream.hakinam2701.workers.dev/${id}/${id}.m3u8`)
         } else {
@@ -95,8 +96,10 @@ function StreamChannel() {
                                                 <Card key={programme.id}>
                                                     <Card.Body>
                                                         <Card.Title>{programme.name}</Card.Title>
+                                                        <Card.Subtitle>{programme.subTitle}</Card.Subtitle>
                                                         <Card.Text>{`Start: ${programme.start} (UTC${programme.timeZoneOffset.split(":")[0]})`}</Card.Text>
                                                         <Card.Text>{`Stop: ${programme.stop} (UTC${programme.timeZoneOffset.split(":")[0]})`}</Card.Text>
+                                                        <Card.Text>{programme.description}</Card.Text>
                                                     </Card.Body>
                                                 </Card>
                                             ))
