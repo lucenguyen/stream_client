@@ -45,7 +45,8 @@ function StreamChannel() {
             channel.programmes = programmes;
             console.log(programmes)
             setSelectedChannel(channel);
-            setSourceLive(`https://start-stream.hakinam2701.workers.dev/${id}/${id}.m3u8`)
+            // setSourceLive(`https://start-stream.hakinam2701.workers.dev/${id}/${id}.m3u8`)
+            setSourceLive(`https://sexy68.com/api/m3u8/${id}/${id}.m3u8`)
         } else {
             navigate("/");
         }
