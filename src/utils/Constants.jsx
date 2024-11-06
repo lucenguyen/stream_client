@@ -1,7 +1,7 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import StreamChannel from "../components/StreamChannel";
 import Home from "../components/Home";
-import AddStream from "../components/AddStream";
+import ChannelManagement from "../components/ChannelManagement";
 
 export const router = createBrowserRouter([
     {
@@ -13,8 +13,8 @@ export const router = createBrowserRouter([
         element: <StreamChannel></StreamChannel>
     },
     {
-        path: "addStream",
-        element: <AddStream></AddStream>
+        path: "admin",
+        element: <ChannelManagement></ChannelManagement>
     },
     {
         path: "*",

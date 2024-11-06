@@ -8,6 +8,18 @@ const ChannelListAPI = {
     addChannel: (newChannel)=> {
         const url = "/addStream";
         return axiosClient.post(url,newChannel)
+    },
+    updateChannel: (channel)=> {
+        const url = "/update";
+        return axiosClient.put(url,channel)
+    },
+    deleteChannel: (id)=> {
+        const url = `/delete/${id}`;
+        return axiosClient.delete(url)
+    },
+    liveStream: (channel)=> {
+        const url = `/live`;
+        return axiosClient.post(url,channel)
     }
 }
 

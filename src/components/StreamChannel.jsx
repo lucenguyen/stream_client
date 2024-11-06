@@ -1,10 +1,12 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ChannelList from "./ChannelList";
 import ClapprPlayer from "./ClapprPlayer";
 import moment from 'moment-timezone';
-import {useDispatch, useSelector} from "react-redux";
-import {Button, ButtonGroup, Card, ListGroup} from "react-bootstrap";
+import { useSelector} from "react-redux";
+import { Card, ListGroup} from "react-bootstrap";
+import {toast} from "react-toastify";
+import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function StreamChannel() {
     const {id} = useParams();
@@ -12,13 +14,14 @@ function StreamChannel() {
     const [selectedChannel, setSelectedChannel] = useState();
     const [sourceLive, setSourceLive] = useState();
     const [logo, setLogo] = useState();
-    const [listChannel, setListChannel] = useState();
+    const [currentChannel, setCurrentChannel] = useState();
     const [isChannel, setIsChannel] = useState(true);
-    const channels = useSelector((state) => state.channels);
-    const [loading, setLoading] = useState(true);
+    const {channels} = useSelector((state) => state.channels);
+    const [loading, setLoading] = useState(false);
+
+    console.log(channels)
     useEffect(() => {
         if (channels.length === 0) {
-            console.log("run here");
             navigate("/");
         } else {
             setLoading(false); // Dữ liệu đã tải xong
@@ -28,9 +31,9 @@ function StreamChannel() {
     useEffect(() => {
         const channel = channels.find((channel) => channel.id.toString() === id);
         if (channel) {
-            setListChannel(channel);
-            setLogo(channel.logo);
-            const programmes = channel.programmes;
+            setCurrentChannel(channel);
+            setLogo(channel.logoUrl);
+            const programmes = channel.programmes ? channel.programmes : [];
             let idProg = 0;
             for (const prog of programmes) {
                 const utcStart = moment(prog.start, 'YYYYMMDDHHmmss Z')
@@ -43,7 +46,6 @@ function StreamChannel() {
                 prog.id = idProg++;
             }
             channel.programmes = programmes;
-            console.log(programmes)
             setSelectedChannel(channel);
             // setSourceLive(`https://start-stream.hakinam2701.workers.dev/${id}/${id}.m3u8`)
             setSourceLive(`https://sexy68.com/api/m3u8/${id}/${id}.m3u8`)
@@ -52,37 +54,40 @@ function StreamChannel() {
         }
     }, [channels, id]);
     const selectedChannelEvent = (channel) => {
-        if (channel) {
+        if (channel && !channel.isLive) {
+            toast.warn("Stream does not available");
+        } else {
             navigate(`/stream/${channel.id}`);
         }
     }
-    if (loading) {
-        return <div>Loading...</div>; // Có thể hiển thị thông báo tải
-    }
-
     return (
         <>
+            <HelmetProvider>
+                <Helmet>
+                    <title>{currentChannel? currentChannel.name : "sexy68.com"}</title>
+                </Helmet>
+            </HelmetProvider>
             <div className="m-lg-5 d-flex">
                 <div className="col-9">
                     <h2>
-                        {listChannel?.name}
+                        {currentChannel?.name}
                     </h2>
-                    {listChannel && listChannel.time ?
+                    {currentChannel && currentChannel.startTime ?
                         <div className="mb-3">Start
-                            Time: {moment.utc(listChannel.time).local().format('YYYY/MM/DD, HH:mm:ss A [UTC]Z z')} {moment.tz.guess()}</div> : ''
+                            Time: {moment.utc(currentChannel.startTime).local().format('YYYY/MM/DD, HH:mm:ss A [UTC]Z z')} {moment.tz.guess()}</div> : ''
                     }
                     <ClapprPlayer
-                        source={sourceLive} img={listChannel && logo}/>
+                        source={sourceLive} img={currentChannel && logo}/>
                 </div>
                 <div className="col-3 mx-2">
-                    <ButtonGroup size="lg" className="mb-2">
-                        <Button variant={!isChannel ? "primary" : "outline-secondary"} onClick={() => {
-                            setIsChannel(false)
-                        }}>Schedule</Button>
-                        <Button variant={isChannel ? "primary" : "outline-secondary"} onClick={() => {
-                            setIsChannel(true)
-                        }}>Channel</Button>
-                    </ButtonGroup>
+                    {/*<ButtonGroup size="lg" className="mb-2">*/}
+                    {/*    <Button variant={!isChannel ? "primary" : "outline-secondary"} onClick={() => {*/}
+                    {/*        setIsChannel(false)*/}
+                    {/*    }}>Schedule</Button>*/}
+                    {/*    <Button variant={isChannel ? "primary" : "outline-secondary"} onClick={() => {*/}
+                    {/*        setIsChannel(true)*/}
+                    {/*    }}>Channel</Button>*/}
+                    {/*</ButtonGroup>*/}
                     {
                         isChannel ? (
                             <ChannelList scroll={true} selectedChannel={selectedChannel}
@@ -107,7 +112,6 @@ function StreamChannel() {
                                         }
                                     </ListGroup>
                                 </div>
-
                             </Card>
                         )
                     }

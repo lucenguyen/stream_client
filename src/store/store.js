@@ -1,8 +1,12 @@
-// store.js
 import { createStore, applyMiddleware } from 'redux';
-import { thunk } from 'redux-thunk'; // Để xử lý action asynchronous
-import channelReducer from './reducer/channelReducer';
+import { Provider } from 'react-redux';
+import { thunk } from 'redux-thunk';
+import rootReducer from './reducers/rootReducer';
 
-const store = createStore(channelReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
-export default store;
+const StoreProvider = ({ children }) => {
+  return <Provider store={store}>{children}</Provider>;
+};
+
+export default StoreProvider;
