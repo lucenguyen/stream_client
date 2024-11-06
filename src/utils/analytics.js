@@ -7,7 +7,7 @@ export const initGA = () => {
 
 // Gửi page view khi trang được tải
 export const logPageView = () => {
-  ReactGA.pageview(window.location.pathname + window.location.search);
+  ReactGA.send(window.location.pathname + window.location.search);
 };
 
 // Gửi sự kiện (Event) tùy chọn
