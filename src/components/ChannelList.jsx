@@ -11,15 +11,14 @@ function ChannelList({selectedChannel, scroll, onSendData}) {
     const channels = useSelector(state => state.channels).channels;
 
     const selectChannel = (channel) => {
-        if(!channel.isLive){
+        if (!channel.isLive) {
             toast.warn("Stream does not available");
-        }
-        else{
-            if (onSendData) {
-            onSendData(channel)
         } else {
-            navigate(`/stream/${channel.id}`)
-        }
+            if (onSendData) {
+                onSendData(channel)
+            } else {
+                navigate(`/stream/${channel.id}`)
+            }
         }
     }
 
@@ -46,11 +45,12 @@ function ChannelList({selectedChannel, scroll, onSendData}) {
                                                            onClick={() => selectChannel(channel)}
                                                            className="d-flex justify-content-between align-items-center"
                                     >
-                                        <Link to={`/stream/${channel.id}`}
-                                              style={{textDecoration: 'none', color: 'inherit'}}>
+                                        <p
+                                            style={{textDecoration: 'none', color: 'inherit'}}>
                                             {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
-                                        </Link>
-                                        {channel.isLive ? (<div><LiveTvTwoToneIcon style={{color: "red"}}/></div>) : (<></>)}
+                                        </p>
+                                        {channel.isLive ? (
+                                            <div><LiveTvTwoToneIcon style={{color: "red"}}/></div>) : (<></>)}
 
                                     </ListGroup.Item>
                                 })}

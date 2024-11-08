@@ -26,6 +26,7 @@ function ChannelManagement() {
         {field: 'startTime', headerName: 'Start time(UTC)', flex: 1},
         {field: 'logoUrl', headerName: 'Logo Url', sortable: false, flex: 2},
         {field: 'streamUrl', headerName: 'Stream Url', sortable: false, flex: 2},
+        {field: 'refererUrl', headerName: 'Referer Url', sortable: false, flex: 2},
         {
             field: 'isLive',
             headerName: 'Live',

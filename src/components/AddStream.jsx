@@ -14,6 +14,7 @@ function AddStream({chanel, emitSaveStream}) {
     const [group, setGroup] = useState(chanel ? chanel.group : '');
     const [logo, setLogo] = useState(chanel ? chanel.logoUrl : '');
     const [url, setUrl] = useState(chanel ? chanel.streamUrl : '');
+    const [referer, setReferer] = useState(chanel ? chanel.refererUrl : '');
     const [startTime, setStartTime] = useState(chanel ? moment(chanel.startTime) : null);
     const dispatch = useDispatch();
     const handleDateChange = (start) => {
@@ -31,6 +32,7 @@ function AddStream({chanel, emitSaveStream}) {
                 "logoUrl": logo,
                 "isLive": chanel ? chanel.isLive : false,
                 "streamUrl": url,
+                "refererUrl": referer === "" || referer === null ? null : referer,
                 "startTime": formattedDate
             }
             if (chanel) {
@@ -91,7 +93,7 @@ function AddStream({chanel, emitSaveStream}) {
                     <Col sm="10">
                         <FormControl
                             type="text"
-                            placeholder="logo Url"
+                            placeholder="Logo Url"
                             value={logo}
                             onChange={(e) => setLogo(e.target.value)}
                             required
@@ -99,15 +101,27 @@ function AddStream({chanel, emitSaveStream}) {
                     </Col>
                 </FormGroup>
 
-                <FormGroup as={Row} className="mb-lg-5">
+                <FormGroup as={Row} className="mb-3">
                     <FormLabel column sm="2">Stream link</FormLabel>
                     <Col sm="10">
                         <FormControl
                             type="text"
-                            placeholder="stream Url"
+                            placeholder="Stream Url"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                             required
+                        />
+                    </Col>
+                </FormGroup>
+
+                <FormGroup as={Row} className="mb-lg-5">
+                    <FormLabel column sm="2">Referer link</FormLabel>
+                    <Col sm="10">
+                        <FormControl
+                            type="text"
+                            placeholder="Referer Url"
+                            value={referer}
+                            onChange={(e) => setReferer(e.target.value)}
                         />
                     </Col>
                 </FormGroup>
