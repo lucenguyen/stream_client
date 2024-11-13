@@ -51,7 +51,6 @@ function ChannelList({selectedChannel, scroll, onSendData}) {
                                         </p>
                                         {channel.isLive ? (
                                             <div><LiveTvTwoToneIcon style={{color: "red"}}/></div>) : (<></>)}
-
                                     </ListGroup.Item>
                                 })}
                             </ListGroup>

@@ -15,7 +15,7 @@ function AddStream({chanel, emitSaveStream}) {
     const [logo, setLogo] = useState(chanel ? chanel.logoUrl : '');
     const [url, setUrl] = useState(chanel ? chanel.streamUrl : '');
     const [referer, setReferer] = useState(chanel ? chanel.refererUrl : '');
-    const [startTime, setStartTime] = useState(chanel ? moment(chanel.startTime) : null);
+    const [startTime, setStartTime] = useState(chanel ? moment.utc(chanel.startTime) : null);
     const dispatch = useDispatch();
     const handleDateChange = (start) => {
         setStartTime(start);
@@ -25,7 +25,7 @@ function AddStream({chanel, emitSaveStream}) {
         if (!startTime || startTime === "") {
             toast.error("StartTime is required");
         } else {
-            const formattedDate = startTime ? startTime.utc().format('YYYY-MM-DD HH:mm:ss') : "";
+            const formattedDate = startTime ? startTime.format('YYYY-MM-DD HH:mm:ss') : "";
             let newStream = {
                 "name": name,
                 "group": group,

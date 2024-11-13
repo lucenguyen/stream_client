@@ -1,10 +1,10 @@
-import { useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ChannelList from "./ChannelList";
 import ClapprPlayer from "./ClapprPlayer";
 import moment from 'moment-timezone';
-import { useSelector} from "react-redux";
-import { Card, ListGroup} from "react-bootstrap";
+import {useSelector} from "react-redux";
+import {Card, Col, ListGroup} from "react-bootstrap";
 import {toast} from "react-toastify";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 
@@ -17,16 +17,31 @@ function StreamChannel() {
     const [currentChannel, setCurrentChannel] = useState();
     const [isChannel, setIsChannel] = useState(true);
     const {channels} = useSelector((state) => state.channels);
-    const [loading, setLoading] = useState(false);
-
-    console.log(channels)
+    const [isMobile, setIsMobile] = useState(false);
+    const [isTablet, setTablet] = useState(false);
     useEffect(() => {
         if (channels.length === 0) {
             navigate("/");
-        } else {
-            setLoading(false); // Dữ liệu đã tải xong
         }
     }, [channels, navigate]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width < 850) {
+                setIsMobile(true);
+            } else if (width > 850 && width < 1030) {
+                setIsMobile(false);
+                setTablet(true);
+            } else {
+                setIsMobile(false);
+                setTablet(false);
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const channel = channels.find((channel) => channel.id.toString() === id);
@@ -64,58 +79,57 @@ function StreamChannel() {
         <>
             <HelmetProvider>
                 <Helmet>
-                    <title>{currentChannel? currentChannel.name : "sexy68.com"}</title>
+                    <title>{currentChannel ? currentChannel.name : "sexy68.com"}</title>
                 </Helmet>
             </HelmetProvider>
-            <div className="m-lg-5 d-flex">
-                <div className="col-9">
-                    <h2>
-                        {currentChannel?.name}
-                    </h2>
-                    {currentChannel && currentChannel.startTime ?
-                        <div className="mb-3">Start
-                            Time: {moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}</div> : ''
-                    }
-                    <ClapprPlayer
-                        source={sourceLive} img={currentChannel && logo}/>
-                </div>
-                <div className="col-3 mx-2">
-                    {/*<ButtonGroup size="lg" className="mb-2">*/}
-                    {/*    <Button variant={!isChannel ? "primary" : "outline-secondary"} onClick={() => {*/}
-                    {/*        setIsChannel(false)*/}
-                    {/*    }}>Schedule</Button>*/}
-                    {/*    <Button variant={isChannel ? "primary" : "outline-secondary"} onClick={() => {*/}
-                    {/*        setIsChannel(true)*/}
-                    {/*    }}>Channel</Button>*/}
-                    {/*</ButtonGroup>*/}
-                    {
-                        isChannel ? (
-                            <ChannelList scroll={true} selectedChannel={selectedChannel}
-                                         onSendData={selectedChannelEvent}/>
-                        ) : (
-                            <Card className="mb-5">
-                                <Card.Header className="fs-3">Schedule</Card.Header>
-                                <div style={{'maxHeight': '400px', 'overflowY': 'auto'}}>
-                                    <ListGroup variant="flush">
-                                        {
-                                            selectedChannel.programmes.map((programme) => (
-                                                <Card key={programme.id}>
-                                                    <Card.Body>
-                                                        <Card.Title>{programme.name}</Card.Title>
-                                                        <Card.Subtitle>{programme.subTitle}</Card.Subtitle>
-                                                        <Card.Text>{`Start: ${programme.start} (UTC${programme.timeZoneOffset.split(":")[0]})`}</Card.Text>
-                                                        <Card.Text>{`Stop: ${programme.stop} (UTC${programme.timeZoneOffset.split(":")[0]})`}</Card.Text>
-                                                        <Card.Text>{programme.description}</Card.Text>
-                                                    </Card.Body>
-                                                </Card>
-                                            ))
-                                        }
-                                    </ListGroup>
-                                </div>
-                            </Card>
-                        )
-                    }
-                </div>
+            <div className={isMobile ? "" : "d-flex"}>
+                <Col xs={12} sm={12} md={12} lg={8}>
+                    <div className="m-2">
+                        <h2>
+                            {currentChannel?.name}
+                        </h2>
+                        {currentChannel && currentChannel.startTime ?
+                            <div className="mb-3">Start
+                                Time: {moment.utc(currentChannel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} {moment.tz.guess()}</div> : ''
+                        }
+                        <ClapprPlayer
+                            source={sourceLive} img={currentChannel && logo}
+                            height={isMobile || isTablet ? "30vh" : "60vh"}
+                        />
+                    </div>
+
+                </Col>
+                <Col lg={4}>
+                    <div style={{marginTop: 5 + 'em'}}>
+                        {
+                            isChannel ? (
+                                <ChannelList scroll={isMobile ? false : true} selectedChannel={selectedChannel}
+                                             onSendData={selectedChannelEvent}/>
+                            ) : (
+                                <Card className="mb-5">
+                                    <Card.Header className="fs-3">Schedule</Card.Header>
+                                    <div style={{'maxHeight': '400px', 'overflowY': 'auto'}}>
+                                        <ListGroup variant="flush">
+                                            {
+                                                selectedChannel.programmes.map((programme) => (
+                                                    <Card key={programme.id}>
+                                                        <Card.Body>
+                                                            <Card.Title>{programme.name}</Card.Title>
+                                                            <Card.Subtitle>{programme.subTitle}</Card.Subtitle>
+                                                            <Card.Text>{`Start: ${programme.start} (UTC${programme.timeZoneOffset.split(":")[0]})`}</Card.Text>
+                                                            <Card.Text>{`Stop: ${programme.stop} (UTC${programme.timeZoneOffset.split(":")[0]})`}</Card.Text>
+                                                            <Card.Text>{programme.description}</Card.Text>
+                                                        </Card.Body>
+                                                    </Card>
+                                                ))
+                                            }
+                                        </ListGroup>
+                                    </div>
+                                </Card>
+                            )
+                        }
+                    </div>
+                </Col>
             </div>
         </>
     )
