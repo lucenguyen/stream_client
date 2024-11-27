@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import {fetchChannels} from "./store/actions/channelActions";
 import {useDispatch} from "react-redux";
 import {initGA, logPageView} from "./utils/analytics";
+import Footer from "./components/Footer";
 
 function App() {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
                 pauseOnHover
                 theme="colored"
             />
+            <Footer id="footer"/>
         </>
     )
 }
