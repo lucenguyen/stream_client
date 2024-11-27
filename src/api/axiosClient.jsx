@@ -2,8 +2,8 @@ import axios from "axios";
 import queryString from 'query-string';
 
 const axiosClient = axios.create({
-    // baseURL: "http://localhost:8080/api",
-    baseURL: "https://sexy68.com/api",
+    baseURL: "http://localhost:8080/api",
+    // baseURL: "https://sexy68.com/api",
     headers:{
 		"content-type": "application/json",
 	},

@@ -1,13 +1,17 @@
 import ChannelList from "./ChannelList";
-import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
-import {fetchChannels} from "../store/actions/channelActions";
-import {Helmet, HelmetProvider} from "react-helmet-async";
-import {Col} from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { fetchChannels } from "../store/actions/channelActions";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Col, NavDropdown, Nav } from "react-bootstrap";
+import News from "./News";
+import FeaturedArticles from "./FeaturedArticles";
+import ImageBanner from "./Banner";
 
 function Home() {
     const dispatch = useDispatch();
     const [isScrollable, setIsScrollable] = useState(true);
+
     useEffect(() => {
         dispatch(fetchChannels());
     }, [dispatch]);
@@ -33,14 +37,38 @@ function Home() {
                     <title>Home Page</title>
                 </Helmet>
             </HelmetProvider>
-            <Col xs={12} sm={12} md={12} lg={12}>
-                <div className="m-lg-5">
-                    <ChannelList scroll={isScrollable}/>
+
+            <Col xs={12}>
+                <div className="d-flex" >
+                    <div
+                        style={{
+                            flex: "7 0 70%"
+                        }}
+                    >
+                        <div className="m-lg-4">
+                            <ImageBanner id="banner" />
+                        </div>
+                        <div className="m-lg-4" id="channel-list-section">
+                            <ChannelList scroll={isScrollable} />
+                        </div>
+                    </div>
+
+                    <div
+                        style={{
+                            flex: "3 0 30%"
+                        }}
+                    >
+                        <div className="m-lg-4" id="news-section">
+                            <News />
+                        </div>
+                        <div className="m-lg-4" id="featured-articles-section">
+                            <FeaturedArticles />
+                        </div>
+                    </div>
                 </div>
             </Col>
-
         </>
-    )
+    );
 }
 
 export default Home;
