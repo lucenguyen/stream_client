@@ -36,7 +36,7 @@ const ImageBanner = () => {
                 textTransform: "uppercase",
                 letterSpacing: "0.05em"
             }}>
-                <h5>Watch Every Game With Game Pass</h5>
+                <h5>Hot News</h5>
             </div>
 
             <img

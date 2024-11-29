@@ -29,7 +29,7 @@ const News = () => {
         <Container className="my-4" style={{ backgroundColor: "#f8f9fa", padding: "20px", borderRadius: "8px" }}>
             <Row>
                 <Col>
-                    <h4 className="mb-3" style={{ textDecoration: "underline", fontStyle: "italic", fontWeight: "bold", fontSize: "15px" }}>
+                    <h4 className="mb-3 news-title" style={{ textDecoration: "underline", fontStyle: "italic", fontWeight: "bold", fontSize: "15px" }}>
                         NEWS
                     </h4>
                     <div className="news-list">
