@@ -1,7 +1,10 @@
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 function Header() {
+    const { darkMode, toggleTheme } = useContext(ThemeContext);
     const channels = useSelector(state => state.channels).channels;
 
     const groups = Array.from(new Set(channels.map(channel => channel.group)));
@@ -15,7 +18,12 @@ function Header() {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+            <Navbar
+                collapseOnSelect
+                expand="lg"
+                className={darkMode ? "bg-dark text-white" : "bg-body-tertiary"}
+                data-bs-theme={darkMode ? "dark" : "light"}
+            >
                 <Container>
                     <Navbar.Brand href="/" className="fs-2">Sexy68</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -36,6 +44,14 @@ function Header() {
                             </NavDropdown>
                             <Nav.Link href="/news">News</Nav.Link>
                             <Nav.Link href="/admin">Sign In</Nav.Link>
+                            {/* Button Toggle Theme */}
+                            <Button
+                                onClick={toggleTheme}
+                                variant={darkMode ? "outline-light" : "outline-dark"}
+                                className="ms-3"
+                            >
+                                {darkMode ? "Light Mode" : "Dark Mode"}
+                            </Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
