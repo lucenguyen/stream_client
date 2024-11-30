@@ -26,20 +26,6 @@ function App() {
         <div className={darkMode ? "dark-mode" : "light-mode"}>
             <Header />
             <div className="theme-toggle" style={{ textAlign: "right", padding: "10px" }}>
-                <button
-                    onClick={toggleTheme}
-                    style={{
-                        padding: "10px",
-                        fontSize: "14px",
-                        backgroundColor: darkMode ? "#333" : "#eee",
-                        color: darkMode ? "#fff" : "#000",
-                        border: "none",
-                        borderRadius: "5px",
-                        cursor: "pointer",
-                    }}
-                >
-                    Switch to {darkMode ? "Light Mode" : "Dark Mode"}
-                </button>
             </div>
             <RouterProvider router={router} />
             <ToastContainer

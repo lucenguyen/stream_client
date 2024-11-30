@@ -39,7 +39,7 @@ function Home() {
             </HelmetProvider>
 
             <Col xs={12}>
-                <div className="d-flex" >
+                <div className="d-flex mx-5" >
                     <div
                         style={{
                             flex: "7 0 70%"
