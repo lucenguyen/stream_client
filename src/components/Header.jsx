@@ -1,12 +1,18 @@
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function Header() {
+    const channels = useSelector(state => state.channels).channels;
+
+    const groups = Array.from(new Set(channels.map(channel => channel.group)));
+
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
     return (
         <>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
@@ -17,9 +23,14 @@ function Header() {
                         <Nav className="ms-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <NavDropdown title="Watch" id="watch-dropdown">
-                                <NavDropdown.Item onClick={() => scrollToSection('channel-list-section')}>NHL Hockey</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => scrollToSection('channel-list-section')}>NBA Basketball</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => scrollToSection('channel-list-section')}>NFL Football</NavDropdown.Item>
+                                {groups.map((group) => (
+                                    <NavDropdown.Item
+                                        key={group}
+                                        onClick={() => scrollToSection(`${group.replace(/\s+/g, '-').toLowerCase()}-section`)}
+                                    >
+                                        {group}
+                                    </NavDropdown.Item>
+                                ))}
                                 <NavDropdown.Item onClick={() => scrollToSection('news-section')}>News</NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => scrollToSection('featured-articles-section')}>Featured Articles</NavDropdown.Item>
                             </NavDropdown>
@@ -32,4 +43,5 @@ function Header() {
         </>
     );
 }
+
 export default Header;

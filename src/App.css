@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .news-title {
+  color: black;
+}
+
+button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Mobile và tablet:*/
+@media (max-width: 768px) {
+  .d-flex {
+    display: block;
+  }
+
+  .d-flex > div {
+    width: 100%;
+  }
+}
