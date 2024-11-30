@@ -61,3 +61,18 @@ button {
   transition: background-color 0.3s, color 0.3s;
 }
 
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Mobile và tablet:*/
+@media (max-width: 768px) {
+  .d-flex {
+    display: block;
+  }
+
+  .d-flex > div {
+    width: 100%;
+  }
+}
