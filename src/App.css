@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #282c34; /* Màu nền default (dark mode) */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -64,6 +64,12 @@ button {
 .d-flex {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media (min-width: 769px) {
+  .home-page {
+    padding: 0 12%;
+  }
 }
 
 /* Mobile và tablet:*/

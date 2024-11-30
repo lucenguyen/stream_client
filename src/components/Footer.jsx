@@ -93,7 +93,7 @@ const Footer = () => {
 
                 <Row className="text-center">
                     <Col>
-                        <p>© 2024 Your Brand Website.</p>
+                        <p>© 2024 Sexy68.</p>
                     </Col>
                 </Row>
             </Container>

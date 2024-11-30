@@ -1,26 +1,30 @@
 import axiosClient from "./axiosClient";
 
 const ChannelListAPI = {
-    getChannelList: ()=> {
+    getChannelList: () => {
         const url = "/list";
-        return axiosClient.get(url)
+        return axiosClient.get(url);
     },
-    addChannel: (newChannel)=> {
+    addChannel: (newChannel) => {
         const url = "/addStream";
-        return axiosClient.post(url,newChannel)
+        return axiosClient.post(url, newChannel);
     },
-    updateChannel: (channel)=> {
+    updateChannel: (channel) => {
         const url = "/update";
-        return axiosClient.put(url,channel)
+        return axiosClient.put(url, channel);
     },
-    deleteChannel: (id)=> {
+    deleteChannel: (id) => {
         const url = `/delete/${id}`;
-        return axiosClient.delete(url)
+        return axiosClient.delete(url);
     },
-    liveStream: (channel)=> {
+    liveStream: (channel) => {
         const url = `/live`;
-        return axiosClient.post(url,channel)
-    }
-}
+        return axiosClient.post(url, channel);
+    },
+    getNews: () => {
+        const url = "/news";
+        return axiosClient.get(url);
+    },
+};
 
 export default ChannelListAPI;
