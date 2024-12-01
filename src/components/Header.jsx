@@ -31,7 +31,7 @@ function Header() {
                         href="/"
                         className={`fs-2 ${darkMode ? "text-white" : "text-dark"}`}
                     >
-                        Sexy68
+                        USA Sport
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
