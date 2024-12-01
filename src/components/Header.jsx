@@ -21,30 +21,55 @@ function Header() {
             <Navbar
                 collapseOnSelect
                 expand="lg"
-                className={darkMode ? "bg-dark text-white" : "bg-body-tertiary"}
+                className={`${
+                    darkMode ? "bg-dark text-white" : "bg-body-tertiary"
+                }`}
                 data-bs-theme={darkMode ? "dark" : "light"}
             >
                 <Container>
-                    <Navbar.Brand href="/" className="fs-2">Sexy68</Navbar.Brand>
+                    <Navbar.Brand
+                        href="/"
+                        className={`fs-2 ${darkMode ? "text-white" : "text-dark"}`}
+                    >
+                        Sexy68
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link
+                                href="/"
+                                className={darkMode ? "text-white" : "text-dark"}
+                            >
+                                Home
+                            </Nav.Link>
                             <NavDropdown title="Watch" id="watch-dropdown">
                                 {groups.map((group) => (
                                     <NavDropdown.Item
                                         key={group}
-                                        onClick={() => scrollToSection(`${group.replace(/\s+/g, '-').toLowerCase()}-section`)}
+                                        onClick={() =>
+                                            scrollToSection(
+                                                `${group
+                                                    .replace(/\s+/g, '-')
+                                                    .toLowerCase()}-section`
+                                            )
+                                        }
                                     >
                                         {group}
                                     </NavDropdown.Item>
                                 ))}
-                                <NavDropdown.Item onClick={() => scrollToSection('news-section')}>News</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => scrollToSection('featured-articles-section')}>Featured Articles</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="/news">News</Nav.Link>
-                            <Nav.Link href="/admin">Sign In</Nav.Link>
-                            {/* Button Toggle Theme */}
+                            <Nav.Link
+                                href="/news"
+                                className={darkMode ? "text-white" : "text-dark"}
+                            >
+                                News
+                            </Nav.Link>
+                            <Nav.Link
+                                href="/admin"
+                                className={darkMode ? "text-white" : "text-dark"}
+                            >
+                                Sign In
+                            </Nav.Link>
                             <Button
                                 onClick={toggleTheme}
                                 variant={darkMode ? "outline-light" : "outline-dark"}

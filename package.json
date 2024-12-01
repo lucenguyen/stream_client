@@ -12,7 +12,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.7",
+    "axios": "^1.7.8",
     "bootstrap": "^5.3.3",
     "clappr": "^0.3.13",
     "gh-pages": "^6.1.1",
@@ -32,6 +32,7 @@
     "react-toastify": "^10.0.6",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
+    "swiper": "^11.1.15",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

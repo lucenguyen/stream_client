@@ -39,7 +39,7 @@ function Home() {
             </HelmetProvider>
 
             <Col xs={12}>
-                <div className="d-flex mx-5" >
+                <div className="d-flex mx-5 home-page" >
                     <div
                         style={{
                             flex: "7 0 70%"
@@ -61,9 +61,9 @@ function Home() {
                         <div className="m-lg-4" id="news-section">
                             <News />
                         </div>
-                        <div className="m-lg-4" id="featured-articles-section">
-                            <FeaturedArticles />
-                        </div>
+                        {/*<div className="m-lg-4" id="featured-articles-section">*/}
+                        {/*    <FeaturedArticles />*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </Col>

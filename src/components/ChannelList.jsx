@@ -1,8 +1,7 @@
 import moment from 'moment-timezone';
-import { Card, ListGroup } from "react-bootstrap";
+import {Card, Image, ListGroup} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LiveTvTwoToneIcon from '@mui/icons-material/LiveTvTwoTone';
 import { toast } from "react-toastify";
 
 function ChannelList({ selectedChannel, scroll, onSendData }) {
@@ -50,7 +49,14 @@ function ChannelList({ selectedChannel, scroll, onSendData }) {
                                         {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                     </p>
                                     {channel.isLive ? (
-                                        <div><LiveTvTwoToneIcon style={{ color: "red" }} /></div>
+                                        <div>
+                                            <Image
+                                                src={`${process.env.PUBLIC_URL}/live-icon.png`}
+                                                fluid
+                                                className="footer-logo"
+                                                style={{ width: "50px", height: "50px", objectFit: "contain" }}
+                                            />
+                                        </div>
                                     ) : null}
                                 </ListGroup.Item>
                             ))}
