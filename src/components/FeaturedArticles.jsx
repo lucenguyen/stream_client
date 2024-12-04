@@ -52,40 +52,24 @@ const FeaturedArticles = () => {
     };
 
     return (
-        <Container className="my-4">
+        <Container className="featured-articles-container my-4">
             <Row>
                 {featuredArticles.map((article, index) => (
                     <Col xs={12} md={12} key={index} className="mb-3">
                         <Card
                             onClick={() => handleCardClick(article.link)}
-                            className="d-flex flex-row align-items-center border-0"
-                            style={{
-                                backgroundColor: "#f8f9fa",
-                                cursor: "pointer",
-                                transition: "transform 0.2s",
-                            }}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                            className="featured-article-card d-flex flex-row align-items-center border-0"
                         >
                             <Card.Img
-                                src={article.imageUrl} // Sử dụng imageUrl thay vì image
+                                src={article.imageUrl}
                                 alt={article.title}
-                                style={{
-                                    width: "100px",
-                                    height: "100px",
-                                    objectFit: "cover",
-                                    borderRadius: "8px",
-                                }}
-                                className="me-3"
+                                className="article-image me-3"
                             />
                             <Card.Body>
-                                <Card.Title className="mb-1" style={{ fontSize: "16px" }}>
+                                <Card.Title className="article-title mb-1">
                                     {article.title}
                                 </Card.Title>
-                                <Card.Text
-                                    className="text-muted"
-                                    style={{ fontSize: "14px", lineHeight: "1.5" }}
-                                >
+                                <Card.Text className="article-description text-muted">
                                     {article.description}
                                 </Card.Text>
                             </Card.Body>

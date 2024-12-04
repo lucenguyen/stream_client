@@ -40,40 +40,24 @@ const News = () => {
     };
 
     return (
-        <Container className="my-4" style={{ backgroundColor: "#f8f9fa", padding: "20px", borderRadius: "8px" }}>
+        <Container className="news-container my-4">
             <Row>
                 <Col>
-                    <h4
-                        className="mb-3 news-title"
-                        style={{
-                            textDecoration: "underline",
-                            fontStyle: "italic",
-                            fontWeight: "bold",
-                            fontSize: "15px",
-                        }}
-                    >
-                        NEWS
-                    </h4>
+                    <h4 className="news-title mb-3">NEWS</h4>
                     <div className="news-list">
                         {newsData.length > 0 ? (
                             newsData.slice(0, visibleNewsCount).map((item, index) => (
-                                <Card
-                                    key={index}
-                                    className="border-0 border-bottom mb-2 pb-2"
-                                    style={{ background: "transparent" }}
-                                >
-
+                                <Card key={index} className="news-card border-0 mb-2 pb-2">
                                     <Card.Link
                                         href={item.links?.web?.href || "#"}
-                                        className="text-decoration-none text-dark"
+                                        className="news-link text-dark"
                                     >
                                         <FaNewspaper className="me-2" />
                                         {item.headline}
                                     </Card.Link>
 
-
                                     {item.description && (
-                                        <Card.Text style={{ fontSize: "14px", color: "#555" }}>
+                                        <Card.Text className="news-description">
                                             {truncateDescription(item.description)}
                                             {item.description.length > 100 && (
                                                 <span>
@@ -96,7 +80,7 @@ const News = () => {
                         )}
                     </div>
                     {visibleNewsCount < newsData.length && (
-                        <div className="mt-3 text-center">
+                        <div className="load-more-btn mt-3 text-center">
                             <Button
                                 variant="link"
                                 onClick={loadMoreNews}

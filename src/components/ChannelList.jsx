@@ -1,8 +1,9 @@
 import moment from 'moment-timezone';
-import {Card, Image, ListGroup} from "react-bootstrap";
+import { Card, Image, ListGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Import the arrows
 
 function ChannelList({ selectedChannel, scroll, onSendData }) {
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ function ChannelList({ selectedChannel, scroll, onSendData }) {
                     <Card.Header id={`${group.replace(/\s+/g, '-').toLowerCase()}-section`} className="fs-3">
                         {group}
                     </Card.Header>
-                    <div style={{ maxHeight: scroll ? '400px' : '100%', overflowY: 'auto' }}>
+                    <div className={`channel-list-wrapper ${scroll ? 'scroll' : ''}`}>
                         <ListGroup variant="flush">
                             {groupedArray[group].map((channel) => (
                                 <ListGroup.Item
@@ -43,18 +44,19 @@ function ChannelList({ selectedChannel, scroll, onSendData }) {
                                     key={channel.id}
                                     active={channel === selectedChannel}
                                     onClick={() => selectChannel(channel)}
-                                    className="d-flex justify-content-between align-items-center"
+                                    className="d-flex justify-content-between align-items-center channel-item"
                                 >
-                                    <p style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
-                                    </p>
+                                    <div className="d-flex align-items-center">
+                                        <p className="channel-name">
+                                            {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
+                                        </p>
+                                    </div>
                                     {channel.isLive ? (
-                                        <div>
+                                        <div className="live-icon-wrapper">
                                             <Image
                                                 src={`${process.env.PUBLIC_URL}/live-icon.png`}
                                                 fluid
-                                                className="footer-logo"
-                                                style={{ width: "50px", height: "50px", objectFit: "contain" }}
+                                                className="live-icon"
                                             />
                                         </div>
                                     ) : null}

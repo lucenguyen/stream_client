@@ -1,0 +1,254 @@
+/* CSS for Hot News Title */
+.hot-news-title {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* CSS for Swiper Container */
+.swiper-container {
+    width: 40vw;
+    height: auto;
+}
+
+/* CSS for Swiper Images */
+.swiper-image {
+    max-width: 60vw;
+    width: 40vw;
+    height: auto;
+    cursor: pointer;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.home-page {
+    display: flex;
+}
+
+.main-content {
+    flex: 7 0 70%;
+}
+
+.sidebar {
+    flex: 3 0 30%;
+}
+
+.card-list-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Container for News */
+.news-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* News Title */
+.news-title {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* News List */
+.news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* News Card */
+.news-card {
+    background: transparent;
+}
+
+/* News Links */
+.news-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* News Description */
+.news-description {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Load More Button */
+.load-more-btn {
+    text-align: center;
+}
+
+/* Ensure "Read More" links are blue on hover */
+.news-description a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.news-description a:hover {
+    text-decoration: underline;
+}
+
+/* Container for Featured Articles */
+.featured-articles-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Featured Article Card */
+.featured-article-card {
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.featured-article-card:hover {
+    transform: scale(1.02);
+}
+
+/* Article Image */
+.article-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Article Title */
+.article-title {
+    font-size: 16px;
+}
+
+/* Article Description */
+.article-description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Optional: Add Border to Featured Article Card Elements */
+.featured-article-card .card-body {
+    padding: 10px;
+}
+
+/* Channel List Wrapper */
+.channel-list-wrapper {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.channel-list-wrapper.scroll {
+    max-height: 400px;
+}
+
+.channel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.channel-item:hover {
+    background-color: #f1f1f1;
+}
+
+.channel-name {
+    text-decoration: none;
+    color: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.live-icon-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.live-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.card-header {
+    font-size: 1.25rem !important;
+    font-weight: bold;
+    background: transparent;
+    padding: .75rem 0 .5rem;
+    margin: 0;
+}
+.card {
+    border: none !important;
+}
+.list-group-item {
+    border: 0 !important;
+    padding: .5rem 0 !important;
+}
+
+.news-page-container h1 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.news-card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    height: 45vh !important;
+}
+
+.news-card:hover {
+    transform: scale(1.02);
+}
+
+.news-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+
+/* Footer Container */
+.footer {
+    background-color: #343a40;
+    padding: 20px 0;
+}
+
+/* Footer Logos */
+.footer-logo-link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Social Media Icons */
+.footer-social-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-social-link:hover {
+    color: #1e90ff;
+}
+
+/* Footer Text */
+.footer p {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 20px;
+}

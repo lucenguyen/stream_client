@@ -3,6 +3,7 @@ import StreamChannel from "../components/StreamChannel";
 import Home from "../components/Home";
 import ChannelManagement from "../components/ChannelManagement";
 import Login from "../components/Login";
+import NewsPage from "../components/NewsPage";
 
 export const router = createBrowserRouter([
     {
@@ -25,4 +26,8 @@ export const router = createBrowserRouter([
         path: "*",
         element: <Navigate to="/"/>,
     },
+    {
+        path: "/news",
+        element: <NewsPage></NewsPage>
+    }
 ]);

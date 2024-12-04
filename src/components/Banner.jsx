@@ -39,41 +39,21 @@ const ImageBanner = () => {
 
     return (
         <div>
-            <div
-                style={{
-                    fontFamily: "'Arial Black', Arial, sans-serif",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    marginBottom: "10px",
-                }}
-            >
+            <div className="hot-news-title">
                 <h5>Hot news</h5>
             </div>
 
             <Swiper
                 spaceBetween={10}
                 slidesPerView={1}
-                style={{
-                    width: "40vw",
-                    height: "auto",
-                }}
+                className="swiper-container"
             >
                 {bannerData.map((item, index) => (
                     <SwiperSlide key={index}>
                         <img
                             src={item.imageUrl}
                             alt={item.altText}
-                            style={{
-                                maxWidth: "60vw",
-                                width: "40vw",
-                                height: "auto",
-                                cursor: "pointer",
-                                borderRadius: "8px",
-                                display: "block",
-                                margin: "0 auto",
-                            }}
+                            className="swiper-image"
                             onClick={() => handleBannerClick(item.link)}
                         />
                     </SwiperSlide>

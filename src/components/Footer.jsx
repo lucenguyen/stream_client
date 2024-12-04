@@ -31,22 +31,17 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-dark text-white py-4">
+        <footer className="footer bg-dark text-white pt-4">
             <Container>
                 <Row className="justify-content-center mb-4">
                     {teamLogos.map((team, index) => (
                         <Col key={index} xs={2} md={1} className="d-flex justify-content-center">
-                            <a
-                                href={team.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href={team.url} target="_blank" rel="noopener noreferrer" className="footer-logo-link">
                                 <Image
                                     src={`${process.env.PUBLIC_URL}/logo-sport/${team.name}.png`}
                                     alt={`${team.name} logo`}
                                     fluid
                                     className="footer-logo"
-                                    style={{ width: "50px", height: "50px", objectFit: "contain" }}
                                 />
                             </a>
                         </Col>
@@ -55,37 +50,37 @@ const Footer = () => {
 
                 <Row className="justify-content-center mb-2">
                     <Col xs="auto">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaFacebook size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaInstagram size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaTwitter size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaYoutube size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaTiktok size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://snapchat.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://snapchat.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaSnapchat size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaLinkedin size={15} />
                         </a>
                     </Col>
