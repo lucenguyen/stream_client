@@ -11,14 +11,14 @@
 
 /* CSS for Swiper Container */
 .swiper-container {
-    width: 40vw;
+    width: 44.5vw;
     height: auto;
 }
 
 /* CSS for Swiper Images */
 .swiper-image {
     max-width: 60vw;
-    width: 40vw;
+    width: 44.5vw;
     height: auto;
     cursor: pointer;
     border-radius: 8px;
