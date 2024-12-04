@@ -63,7 +63,8 @@ function StreamChannel() {
             channel.programmes = programmes;
             setSelectedChannel(channel);
             // setSourceLive(`https://start-stream.hakinam2701.workers.dev/${id}/${id}.m3u8`)
-            setSourceLive(`https://sexy68.com/api/m3u8/${id}/${id}.m3u8`)
+            // setSourceLive(`https://sexy68.com/api/m3u8/${id}/${id}.m3u8`)
+            setSourceLive(`https://usasport.live/api/m3u8/${id}/${id}.m3u8`)
         } else {
             navigate("/");
         }
@@ -79,7 +80,7 @@ function StreamChannel() {
         <>
             <HelmetProvider>
                 <Helmet>
-                    <title>{currentChannel ? currentChannel.name : "sexy68.com"}</title>
+                    <title>{currentChannel ? currentChannel.name : "usasport.live"}</title>
                 </Helmet>
             </HelmetProvider>
             <div className={isMobile ? "" : "d-flex"}>
