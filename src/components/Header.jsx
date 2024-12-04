@@ -80,7 +80,7 @@ function Header() {
                         </li>
                         <li className="nav-item">
                             <a
-                                href="/"
+                                href="/login"
                                 className={`nav-link ${darkMode ? "text-white" : "text-dark"}`}
                             >
                                 <i className="fa fa-user" aria-hidden="true"></i> Sign In

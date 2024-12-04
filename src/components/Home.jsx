@@ -32,12 +32,6 @@ function Home() {
 
     return (
         <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>Home Page</title>
-                </Helmet>
-            </HelmetProvider>
-
             <Col xs={12}>
                 <div className="d-flex mx-5 home-page">
                     <div className="main-content">

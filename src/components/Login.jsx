@@ -20,7 +20,7 @@ function Login() {
                 toast.error("Password is incorrect");
             } else {
                 saveDataWithExpiry("user", { username });
-                navigate("/admin");
+                navigate("/");
             }
         } catch (error) {
             toast.error(error.response.data.message);

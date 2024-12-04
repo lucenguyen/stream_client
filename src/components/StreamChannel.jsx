@@ -78,11 +78,6 @@ function StreamChannel() {
     }
     return (
         <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>{currentChannel ? currentChannel.name : "usasport.live"}</title>
-                </Helmet>
-            </HelmetProvider>
             <div className={isMobile ? "" : "d-flex"}>
                 <Col xs={12} sm={12} md={12} lg={8}>
                     <div className="m-2">
