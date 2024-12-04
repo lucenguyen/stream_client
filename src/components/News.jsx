@@ -47,7 +47,7 @@ const News = () => {
                     <div className="news-list">
                         {newsData.length > 0 ? (
                             newsData.slice(0, visibleNewsCount).map((item, index) => (
-                                <Card key={index} className="news-card border-0 mb-2 pb-2">
+                                <Card key={index} className="news-card-page border-0 mb-2 pb-2">
                                     <Card.Link
                                         href={item.links?.web?.href || "#"}
                                         className="news-link text-dark"
