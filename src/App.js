@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { initGA, logPageView } from "./utils/analytics";
 import Footer from "./components/Footer";
 import { ThemeContext } from "./components/ThemeContext"; // Import Context
+import './styles/custom.css';
+
 
 function App() {
     const dispatch = useDispatch();
@@ -25,7 +27,7 @@ function App() {
     return (
         <div className={darkMode ? "dark-mode" : "light-mode"}>
             <Header />
-            <div className="theme-toggle" style={{ textAlign: "right", padding: "10px" }}>
+            <div className="theme-toggle">
             </div>
             <RouterProvider router={router} />
             <ToastContainer
