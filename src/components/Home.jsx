@@ -7,6 +7,7 @@ import { Col, NavDropdown, Nav } from "react-bootstrap";
 import News from "./News";
 import FeaturedArticles from "./FeaturedArticles";
 import ImageBanner from "./Banner";
+import ScrollButtons from "./ScrollButtons";
 
 function Home() {
     const dispatch = useDispatch();
@@ -38,8 +39,14 @@ function Home() {
                         <div className="m-lg-4">
                             <ImageBanner id="banner" />
                         </div>
+                        <div className={"ads-1"}>
+                            ads
+                        </div>
                         <div className="m-lg-4" id="channel-list-section">
                             <ChannelList scroll={isScrollable} />
+                        </div>
+                        <div className={"ads-2"}>
+                            ads
                         </div>
                     </div>
 
@@ -47,10 +54,16 @@ function Home() {
                         <div className="m-lg-4" id="news-section">
                             <News />
                         </div>
-                        {/* <div className="m-lg-4" id="featured-articles-section"> */}
-                        {/*     <FeaturedArticles /> */}
-                        {/* </div> */}
+                        <div className={"ads-3"}>
+                            ads
+                        </div>
+                         <div className="m-lg-4" id="featured-articles-section">
+                             <FeaturedArticles />
+                         </div>
                     </div>
+                </div>
+                <div>
+                    <ScrollButtons></ScrollButtons>
                 </div>
             </Col>
         </>

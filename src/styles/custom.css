@@ -11,14 +11,14 @@
 
 /* CSS for Swiper Container */
 .swiper-container {
-    width: 40vw;
-    height: auto;
+    width: 44.5vw;
+    height: 50vh;
 }
 
 /* CSS for Swiper Images */
 .swiper-image {
     max-width: 60vw;
-    width: 40vw;
+    width: 44.5vw;
     height: auto;
     cursor: pointer;
     border-radius: 8px;
@@ -41,6 +41,33 @@
 .card-list-container {
     max-height: 400px;
     overflow-y: auto;
+}
+
+.ads-1 {
+    width: 46vw;
+    height: 20vh;
+    background-color: #a9a6a6;
+    margin:0 0 10% 3%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ads-2 {
+    width: 46vw;
+    height: 5vh;
+    background-color: #a9a6a6;
+    margin:0 0 10% 3%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ads-3 {
+    width: 18vw;
+    height: 12vh;
+    background-color: #a9a6a6;
+    margin:0 0 10% 6%;
+    border-radius: 10px;
+    text-align: center;
 }
 
 /* Container for News */
