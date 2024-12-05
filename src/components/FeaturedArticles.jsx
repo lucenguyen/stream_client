@@ -27,18 +27,6 @@ const FeaturedArticles = () => {
                     description: "Your personalized view of the NFL schedule.",
                     link: "/article/3",
                 },
-                {
-                    imageUrl: "https://via.placeholder.com/1920x1080",
-                    title: "Ways to Watch",
-                    description: "Your personalized view of the NFL schedule.",
-                    link: "/article/4",
-                },
-                {
-                    imageUrl: "https://via.placeholder.com/1920x1080",
-                    title: "Ways to Watch",
-                    description: "Your personalized view of the NFL schedule.",
-                    link: "/article/5",
-                },
             ];
             setTimeout(() => {
                 setFeaturedArticles(fakeData);
