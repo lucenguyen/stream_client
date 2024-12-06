@@ -4,7 +4,8 @@ import {
     UPDATE_CHANNEL,
     DELETE_CHANNEL,
     CHANNEL_ERROR,
-    LIVE_STREAM
+    LIVE_STREAM,
+    FETCH_NEWS
 } from '../actions/channelActions';
 import {toast} from "react-toastify";
 
@@ -16,6 +17,8 @@ const channelReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_CHANNELS:
             return {...state, channels: action.payload};
+        case FETCH_NEWS:
+            return {...state, news: action.payload};
         case ADD_CHANNEL:
             toast.success("Add stream successfully.");
             return {...state, channels: [...state.channels, action.payload]};

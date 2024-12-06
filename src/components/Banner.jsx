@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-
-import ChannelListAPI from "../../src/api/ChannelListAPI";
+import React, { useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchNews } from "../store/actions/channelActions";
 
 const ImageBanner = () => {
-    const [bannerData, setBannerData] = useState([]);
+    const dispatch = useDispatch();
+
+    const newsData = useSelector((state) => state.channels.news || []);
 
     useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const response = await ChannelListAPI.getNews();
-                if (response && response.data && Array.isArray(response.data)) {
-                    const topImages = response.data.slice(0, 3).map(item => ({
-                        imageUrl: item.images && item.images[0] ? item.images[0].url : "",
-                        altText: item.headline,
-                        link: item.links?.web?.href || "#",
-                    }));
-                    setBannerData(topImages);
-                } else {
-                    setBannerData([]);
-                }
-            } catch (error) {
-                setBannerData([]);
-            }
-        };
+        dispatch(fetchNews());
+    }, [dispatch]);
 
-        fetchNews();
-    }, []);
+    const bannerData = (newsData || [])
+        .slice(0, 3)
+        .map((item) => ({
+            imageUrl: item.images && item.images[0] ? item.images[0].url : "",
+            altText: item.headline,
+            link: item.links?.web?.href || "#",
+        }))
+        .filter((item) => item.imageUrl);
 
     const handleBannerClick = (link) => {
         window.open(link, "_blank");
@@ -40,14 +33,10 @@ const ImageBanner = () => {
     return (
         <div>
             <div className="hot-news-title">
-                <h5>Hot news</h5>
+                <h5>Hot News</h5>
             </div>
 
-            <Swiper
-                spaceBetween={10}
-                slidesPerView={1}
-                className="swiper-container"
-            >
+            <Swiper spaceBetween={10} slidesPerView={1} className="swiper-container">
                 {bannerData.map((item, index) => (
                     <SwiperSlide key={index}>
                         <img

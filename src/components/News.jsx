@@ -1,33 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { FaArrowRight, FaNewspaper } from "react-icons/fa";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import ChannelListAPI from "../../src/api/ChannelListAPI";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchNews } from "../store/actions/channelActions";
 
-const News = () => {
-    const [newsData, setNewsData] = useState([]);
-    const navigate = useNavigate(); // Initialize navigate
+const News = ({ scroll }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const newsData = useSelector((state) => state.channels.news);
 
     useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const response = await ChannelListAPI.getNews();
-                if (response && response.data && Array.isArray(response.data)) {
-                    setNewsData(response.data);
-                } else {
-                    console.error("Invalid data format:", response.data);
-                    toast.error("Unexpected data format from API.");
-                    setNewsData([]);
-                }
-            } catch (error) {
-                console.error("Error fetching news:", error);
-                toast.error("Failed to load news. Please try again.");
-            }
-        };
-
-        fetchNews();
-    }, []);
+        dispatch(fetchNews());
+    }, [dispatch]);
 
     const truncateDescription = (description, maxLength = 100) => {
         if (description.length > maxLength) {
@@ -42,7 +28,7 @@ const News = () => {
                 <Col>
                     <h4 className="news-title mb-3">NEWS</h4>
                     <div className="news-list">
-                        {newsData.length > 0 ? (
+                        {newsData && newsData.length > 0 ? (
                             newsData.slice(0, 3).map((item, index) => (
                                 <Card key={index} className="news-card-page border-0 mb-2 pb-2">
                                     <Card.Link
@@ -79,7 +65,7 @@ const News = () => {
                     <div className="load-more-btn mt-3 text-center">
                         <Button
                             variant="link"
-                            onClick={() => navigate('/news')}
+                            onClick={() => navigate("/news")}
                             className="text-decoration-none text-dark d-flex align-items-center justify-content-center"
                         >
                             More News
