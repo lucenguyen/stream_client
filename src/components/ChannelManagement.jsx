@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {Box, Modal, Paper, Typography} from "@mui/material";
+import {Box, Modal, Paper} from "@mui/material";
 import {DataGrid} from '@mui/x-data-grid';
 import {Button, Spinner} from "react-bootstrap";
 import {useEffect, useState} from "react";
@@ -11,7 +11,7 @@ import StopCircleTwoToneIcon from '@mui/icons-material/StopCircleTwoTone';
 import SyncTwoToneIcon from '@mui/icons-material/SyncTwoTone';
 import {deleteChannel, fetchChannels, liveStream} from "../store/actions/channelActions";
 import {Helmet, HelmetProvider} from "react-helmet-async";
-import {getData, getDataWithExpiry} from "../utils/LocalStorage";
+import {getDataWithExpiry} from "../utils/LocalStorage";
 import {useNavigate} from "react-router-dom";
 import SyncChannelAPI from "../api/SyncChannelAPI";
 import {toast} from "react-toastify";
@@ -21,14 +21,14 @@ function ChannelManagement() {
     const [open, setOpen] = useState(false);
     const [channel, setChannel] = useState(null);
     const dispatch = useDispatch();
-    const [user, setUser] = useState(() => getDataWithExpiry("user"));
+    const [user] = useState(() => getDataWithExpiry("user"));
     const [sync, setSync] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         if (user === null) {
             navigate("/login");
         }
-    }, [user]);
+    });
 
 
     const columns = [

@@ -1,11 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Clappr from 'clappr';
 import '../App.css';
 import './ClapprPlayer.css';
 
 const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
     const playerRef = useRef(null);
-    const [isplay, setIsplay] = useState(false);
     useEffect(() => {
         // Kiểm tra xem playerRef đã tồn tại chưa
         if (!playerRef.current) return;
@@ -41,7 +40,7 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
         return () => {
             player.destroy();
         };
-    }, [source, width, height]); // Gọi lại khi source, width hoặc height thay đổi
+    }, [source, width, height,img]); // Gọi lại khi source, width hoặc height thay đổi
 
     return (
         <div>

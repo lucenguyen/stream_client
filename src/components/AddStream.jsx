@@ -1,11 +1,10 @@
-import {Button, Card, Col, Form, FormControl, FormGroup, FormLabel, Row} from "react-bootstrap";
+import {Button, Col, Form, FormControl, FormGroup, FormLabel, Row} from "react-bootstrap";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
 import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterMoment} from "@mui/x-date-pickers/AdapterMoment";
 import {TextField} from "@mui/material";
 import {toast} from "react-toastify";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addChannel, updateChannel} from "../store/actions/channelActions";
 import moment from "moment-timezone";
 

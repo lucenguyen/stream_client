@@ -14,7 +14,7 @@ import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function App() {
     const dispatch = useDispatch();
-    const {darkMode, toggleTheme} = useContext(ThemeContext);
+    const {darkMode} = useContext(ThemeContext);
 
     useEffect(() => {
         dispatch(fetchChannels());
