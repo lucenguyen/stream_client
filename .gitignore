@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+/stream_client
+
+stream_client.zip
 
 # testing
 /coverage
