@@ -13,20 +13,15 @@
 
 /* CSS for Swiper Container */
 .swiper-container {
-    width: 44.5vw;
-    height: 50vh;
-    position: relative;
+    width: 60vw;
+    margin: unset !important;
+    max-height: 60vh;
 }
 
 /* CSS for Swiper Images */
 .swiper-image {
-    /*max-width: 60vw;*/
-    width: 100vw;
-    height: auto;
-    cursor: pointer;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto;
+    max-width: 80vw;
+    width: 60vw;
 }
 
 .banner-image {
@@ -40,15 +35,7 @@
 }
 
 .home-page {
-    display: flex;
-}
-
-.main-content {
-    flex: 7 0 70%;
-}
-
-.sidebar {
-    flex: 3 0 30%;
+    padding: 0 5% 0 5%;
 }
 
 .card-list-container {
@@ -57,29 +44,29 @@
 }
 
 .ads-1 {
-    width: 46vw;
+    width: 60vw;
     height: 20vh;
     background-color: #a9a6a6;
-    /*margin:0 0 10% 3%;*/
-    /*border-radius: 10px;*/
+/*     margin:0 0 3% 3%; */
+/*     border-radius: 10px; */
     text-align: center;
 }
 
 .ads-2 {
-    width: 46vw;
+    width: 60vw;
     height: 5vh;
     background-color: #a9a6a6;
-    /*margin:0 0 10% 3%;*/
-    /*border-radius: 10px;*/
+/*     margin:0 0 5% 2%; */
+/*     border-radius: 10px; */
     text-align: center;
 }
 
 .ads-3 {
-    width: 18vw;
+    width: 28vw;
     height: 12vh;
     background-color: #a9a6a6;
-    /*margin:0 0 10% 6%;*/
-    /*border-radius: 10px;*/
+/*     margin:0 0 5% 4%; */
+/*     border-radius: 10px; */
     text-align: center;
 }
 

@@ -1,6 +1,7 @@
 import channelListAPI from "../../api/ChannelListAPI";
 
 export const FETCH_CHANNELS = 'FETCH_CHANNELS';
+export const FETCH_NEWS = "FETCH_NEWS";
 export const ADD_CHANNEL = 'ADD_CHANNEL';
 export const UPDATE_CHANNEL = 'UPDATE_CHANNEL';
 export const DELETE_CHANNEL = 'DELETE_CHANNEL';
@@ -60,4 +61,12 @@ export const liveStream = (channel) => {
       dispatch({ type: CHANNEL_ERROR, payload: error.response.data.message }); // Gửi action lỗi
     }
   };
+};
+export const fetchNews = () => async (dispatch) => {
+  try {
+    const response = await channelListAPI.getNews();
+    dispatch({ type: FETCH_NEWS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: CHANNEL_ERROR, payload: error.message });
+  }
 };
