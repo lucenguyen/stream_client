@@ -31,7 +31,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="footer bg-dark text-white pt-4">
+        <footer className="footer bg-dark text-white pt-4 mt-4">
             <Container>
                 <Row className="justify-content-center mb-4">
                     {teamLogos.map((team, index) => (
@@ -50,37 +50,37 @@ const Footer = () => {
 
                 <Row className="justify-content-center mb-2">
                     <Col xs="auto">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaFacebook size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaInstagram size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaTwitter size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaYoutube size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaTiktok size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://snapchat.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaSnapchat size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <FaLinkedin size={15} />
                         </a>
                     </Col>

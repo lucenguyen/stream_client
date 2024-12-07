@@ -4,19 +4,21 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
 import {FaAngleDoubleRight} from 'react-icons/fa';
+import {useState} from "react";
 
-function ChannelList({selectedChannel, scroll, onSendData}) {
+function ChannelList({channels, selectedChannel, readMore, onSendData}) {
     const navigate = useNavigate();
-    const channels = useSelector(state => state.channels).channels;
-
+    // const channels = useSelector(state => state.channels).channels;
     const selectChannel = (channel) => {
+        console.log(channel)
+
         if (!channel.isLive) {
             toast.warn("Stream does not available");
         } else {
             if (onSendData) {
                 onSendData(channel);
             } else {
-                navigate(`/stream/${channel.id}`);
+                navigate(`/watch/${channel.group.replace(/\s+/g, '-').toLowerCase()}/${channel.id}`);
             }
         }
     };
@@ -34,7 +36,7 @@ function ChannelList({selectedChannel, scroll, onSendData}) {
         <>
             {Object.keys(groupedArray).map((group) => {
                 // Limit to 10 items per group
-                const limitedItems = groupedArray[group].slice(0, 10);
+                const limitedItems = readMore ? groupedArray[group].slice(0, 10) : groupedArray[group];
 
                 return (
                     <Card key={group} className="mb-5 d-flex">
@@ -52,15 +54,17 @@ function ChannelList({selectedChannel, scroll, onSendData}) {
                                 </h2>
                             </a>
                             {/* Read More button */}
-                            <Button
-                                variant="link"
-                                className="text-decoration-none"
-                                onClick={() => navigate(`/group/${group.replace(/\s+/g, '-').toLowerCase()}`)}
-                            >
-                                Read More
-                            </Button>
+                            {readMore && (
+                                <Button
+                                    variant="link"
+                                    className="text-decoration-none"
+                                    onClick={() => navigate(`/watch/${group.replace(/\s+/g, '-').toLowerCase()}`)}
+                                >
+                                    Read More
+                                </Button>
+                            )}
                         </Card.Header>
-                        <div className={`channel-list-wrapper ${scroll ? 'scroll' : ''}`}>
+                        <div className={`channel-list-wrapper`}>
                             <ListGroup variant="flush">
                                 {limitedItems.map((channel) => (
                                     <ListGroup.Item

@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import ChannelManagement from "../components/ChannelManagement";
 import Login from "../components/Login";
 import NewsPage from "../components/NewsPage";
+import StreamDetail from "../components/StreamDetail";
 
 export const router = createBrowserRouter([
     {
@@ -11,8 +12,12 @@ export const router = createBrowserRouter([
         element: <Home></Home>
     },
     {
-        path: "stream/:id",
+        path: "watch/:group/:id",
         element: <StreamChannel></StreamChannel>
+    },
+    {
+        path: "watch/:group",
+        element: <StreamDetail></StreamDetail>
     },
     {
         path: "admin",
@@ -30,4 +35,12 @@ export const router = createBrowserRouter([
         path: "/news",
         element: <NewsPage></NewsPage>
     }
-]);
+], {
+    future: {
+        v7_skipActionErrorRevalidation: true, // Bật cờ để tương thích React Router v7
+        v7_partialHydration: true,
+        v7_relativeSplatPath: true,
+        v7_normalizeFormMethod: true,
+        v7_fetcherPersist: true
+    },
+});

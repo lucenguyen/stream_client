@@ -1,15 +1,14 @@
-import ChannelList from "./ChannelList";
-
-import {Col, Container, Row} from "react-bootstrap";
-import News from "./News";
-import FeaturedArticles from "./FeaturedArticles";
-import ImageBanner from "./Banner";
-import ScrollButtons from "./ScrollButtons";
+import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import ChannelList from "./ChannelList";
 import {useEffect, useState} from "react";
+import News from "./News";
+import {Col, Container, Row} from "react-bootstrap";
 
-function Home() {
-    const channels = useSelector((state) => state.channels).channels;
+function StreamDetail() {
+    const {group} = useParams();
+    const listChannels = useSelector((state) => state.channels).channels;
+    const [channels, setChannels] = useState([]);
     const [desktop, setDesktop] = useState(true);
     useEffect(() => {
         const handleResize = () => {
@@ -24,20 +23,24 @@ function Home() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+    useEffect(() => {
+        if (listChannels) {
+            const channelsFilter = listChannels.filter((channel) => channel.group.replace(/\s+/g, "-").toLowerCase() === group);
+            setChannels(channelsFilter);
+        }
+    }, [listChannels, group]);
+    console.log("channels", channels);
     return (
         <>
             <Container fluid className={`px-5 ${desktop ? 'w-75' : ''}`}>
                 <Row>
                     {/* Main Content */}
                     <Col xs={12} md={7} lg={8} className="main-content">
-                        <div className="m-lg-4">
-                            <ImageBanner id="banner"/>
-                        </div>
                         {/*<div className="ads-1">*/}
                         {/*    ads*/}
                         {/*</div>*/}
                         <div className="m-lg-4" id="channel-list-section">
-                            <ChannelList channels={channels} readMore={true}/>
+                            <ChannelList channels={channels} readMore={false}/>
                         </div>
                     </Col>
 
@@ -49,14 +52,11 @@ function Home() {
                         {/*<div className="ads-3">*/}
                         {/*    ads*/}
                         {/*</div>*/}
-                        <div className="m-lg-4" id="featured-articles-section">
-                            <FeaturedArticles/>
-                        </div>
                     </Col>
                 </Row>
             </Container>
         </>
-    );
+    )
 }
 
-export default Home;
+export default StreamDetail;

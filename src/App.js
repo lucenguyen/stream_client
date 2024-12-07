@@ -8,14 +8,13 @@ import {useDispatch} from "react-redux";
 import {initGA, logPageView} from "./utils/analytics";
 import Footer from "./components/Footer";
 import {ThemeContext} from "./components/ThemeContext"; // Import Context
-import './styles/custom.css';
 import {Helmet, HelmetProvider} from "react-helmet-async";
+import ScrollButtons from "./components/ScrollButtons";
 
 
 function App() {
     const dispatch = useDispatch();
     const {darkMode} = useContext(ThemeContext);
-
     useEffect(() => {
         dispatch(fetchChannels());
     }, [dispatch]);
@@ -50,6 +49,9 @@ function App() {
                     theme="colored"
                 />
                 <Footer id="footer"/>
+            </div>
+            <div>
+                <ScrollButtons/>
             </div>
         </>
     );

@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchNews } from "../store/actions/channelActions";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Image } from "react-bootstrap";
 
 const ImageBanner = () => {
-    const dispatch = useDispatch();
-    const newsData = useSelector((state) => state.channels.news || []);
+    const newsData = useSelector((state) => state.channels).news || [];
     const bannerData = (newsData || [])
         .slice(0, 3)
         .map((item) => ({
@@ -36,23 +33,6 @@ const ImageBanner = () => {
                 className="banner-image"
                 onClick={() => handleBannerClick(bannerData[0].link)}
             />
-
-            {/*<Swiper*/}
-            {/*    spaceBetween={10}*/}
-            {/*    slidesPerView={1}*/}
-            {/*    className="swiper-container"*/}
-            {/*>*/}
-            {/*    {bannerData.map((item, index) => (*/}
-            {/*        <SwiperSlide key={index}>*/}
-            {/*            <Image*/}
-            {/*                src={item.imageUrl}*/}
-            {/*                alt={item.altText}*/}
-            {/*                className="swiper-image"*/}
-            {/*                onClick={() => handleBannerClick(item.link)}*/}
-            {/*            />*/}
-            {/*        </SwiperSlide>*/}
-            {/*    ))}*/}
-            {/*</Swiper>*/}
         </div>
     );
 };

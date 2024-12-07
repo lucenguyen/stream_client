@@ -2,7 +2,7 @@ import {Button, Container, Image, Navbar, NavDropdown} from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
-import { FaMoon, FaSun } from "react-icons/fa"; // Import icon
+import { FaMoon, FaSun } from "react-icons/fa";
 
 function Header() {
     const { darkMode, toggleTheme } = useContext(ThemeContext);
@@ -10,12 +10,9 @@ function Header() {
 
     const groups = Array.from(new Set(channels.map((channel) => channel.group)));
 
-    const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+    const selectGroup = (group) => {
+        window.location.href = `/watch/${group.replace(/\s+/g, "-").toLowerCase()}`;
+    }
 
     return (
         <Navbar
@@ -58,11 +55,7 @@ function Header() {
                                     <NavDropdown.Item
                                         key={group}
                                         onClick={() =>
-                                            scrollToSection(
-                                                `${group
-                                                    .replace(/\s+/g, "-")
-                                                    .toLowerCase()}-section`
-                                            )
+                                            selectGroup(group)
                                         }
                                     >
                                         {group}
