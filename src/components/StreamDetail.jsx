@@ -27,9 +27,9 @@ function StreamDetail() {
         if (listChannels) {
             const channelsFilter = listChannels.filter((channel) => channel.group.replace(/\s+/g, "-").toLowerCase() === group);
             setChannels(channelsFilter);
+
         }
     }, [listChannels, group]);
-    console.log("channels", channels);
     return (
         <>
             <Container fluid className={`px-5 ${desktop ? 'w-75' : ''}`}>

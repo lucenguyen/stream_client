@@ -46,7 +46,7 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                         >
                             {/* Header title with href */}
                             <a
-                                href={`#${group.replace(/\s+/g, '-').toLowerCase()}-section`}
+                                href={`/watch/${group.replace(/\s+/g, '-').toLowerCase()}`}
                                 className="text-decoration-none text-dark"
                             >
                                 <h2>
