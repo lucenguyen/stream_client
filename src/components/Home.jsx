@@ -10,47 +10,36 @@ import ImageBanner from "./Banner";
 import ScrollButtons from "./ScrollButtons";
 
 function Home() {
-    const dispatch = useDispatch();
-    const [isScrollable, setIsScrollable] = useState(true);
-
-    useEffect(() => {
-        dispatch(fetchChannels());
-    }, [dispatch]);
-
-    useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth;
-            if (width < 768) {
-                setIsScrollable(false);
-            } else {
-                setIsScrollable(true);
-            }
-        };
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    // const [isScrollable, setIsScrollable] = useState(true);
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         const width = window.innerWidth;
+    //         if (width < 768) {
+    //             setIsScrollable(false);
+    //         } else {
+    //             setIsScrollable(true);
+    //         }
+    //     };
+    //     handleResize();
+    //     window.addEventListener('resize', handleResize);
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     return (
         <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>Home Page</title>
-                </Helmet>
-            </HelmetProvider>
-
             <Container fluid className="home-page px-5">
                 <Row>
                     {/* Main Content */}
                     <Col xs={12} md={7} lg={8} className="main-content">
                         <div className="m-lg-4">
+
                             <ImageBanner id="banner" />
                         </div>
                         <div className="ads-1">
                             ads
                         </div>
                         <div className="m-lg-4" id="channel-list-section">
-                            <ChannelList scroll={isScrollable} />
+                            <ChannelList scroll={false} />
                         </div>
                         <div className="ads-2">
                             ads

@@ -20,7 +20,7 @@ const NewsPage = () => {
                 <>
                     {description.substring(0, maxLength)}...
                     <a
-                        href="#"
+                        href="/"
                         className="text-primary"
                         style={{ textDecoration: "none" }}
                         onClick={(e) => e.preventDefault()}

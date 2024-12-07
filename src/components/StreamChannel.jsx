@@ -6,7 +6,6 @@ import moment from 'moment-timezone';
 import {useSelector} from "react-redux";
 import {Card, Col, ListGroup} from "react-bootstrap";
 import {toast} from "react-toastify";
-import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function StreamChannel() {
     const {id} = useParams();
@@ -15,7 +14,7 @@ function StreamChannel() {
     const [sourceLive, setSourceLive] = useState();
     const [logo, setLogo] = useState();
     const [currentChannel, setCurrentChannel] = useState();
-    const [isChannel, setIsChannel] = useState(true);
+    const [isChannel] = useState(true);
     const {channels} = useSelector((state) => state.channels);
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setTablet] = useState(false);
@@ -68,7 +67,7 @@ function StreamChannel() {
         } else {
             navigate("/");
         }
-    }, [channels, id]);
+    }, [channels, id, navigate]);
     const selectedChannelEvent = (channel) => {
         if (channel && !channel.isLive) {
             toast.warn("Stream does not available");
@@ -78,11 +77,6 @@ function StreamChannel() {
     }
     return (
         <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>{currentChannel ? currentChannel.name : "usasport.live"}</title>
-                </Helmet>
-            </HelmetProvider>
             <div className={isMobile ? "" : "d-flex"}>
                 <Col xs={12} sm={12} md={12} lg={8}>
                     <div className="m-2">

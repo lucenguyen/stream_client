@@ -6,13 +6,7 @@ import { fetchNews } from "../store/actions/channelActions";
 
 const ImageBanner = () => {
     const dispatch = useDispatch();
-
     const newsData = useSelector((state) => state.channels.news || []);
-
-    useEffect(() => {
-        dispatch(fetchNews());
-    }, [dispatch]);
-
     const bannerData = (newsData || [])
         .slice(0, 3)
         .map((item) => ({
@@ -31,23 +25,34 @@ const ImageBanner = () => {
     }
 
     return (
-        <div>
+        <div className="w-100">
             <div className="hot-news-title">
-                <h5>Hot News</h5>
+                <h1>Hot news</h1>
             </div>
 
-            <Swiper spaceBetween={10} slidesPerView={1} className="swiper-container">
-                {bannerData.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <img
-                            src={item.imageUrl}
-                            alt={item.altText}
-                            className="swiper-image"
-                            onClick={() => handleBannerClick(item.link)}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <Image
+                src={bannerData[0].imageUrl}
+                alt={bannerData[0].altText}
+                className="banner-image"
+                onClick={() => handleBannerClick(bannerData[0].link)}
+            />
+
+            {/*<Swiper*/}
+            {/*    spaceBetween={10}*/}
+            {/*    slidesPerView={1}*/}
+            {/*    className="swiper-container"*/}
+            {/*>*/}
+            {/*    {bannerData.map((item, index) => (*/}
+            {/*        <SwiperSlide key={index}>*/}
+            {/*            <Image*/}
+            {/*                src={item.imageUrl}*/}
+            {/*                alt={item.altText}*/}
+            {/*                className="swiper-image"*/}
+            {/*                onClick={() => handleBannerClick(item.link)}*/}
+            {/*            />*/}
+            {/*        </SwiperSlide>*/}
+            {/*    ))}*/}
+            {/*</Swiper>*/}
         </div>
     );
 };

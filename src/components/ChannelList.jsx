@@ -1,11 +1,11 @@
 import moment from 'moment-timezone';
-import { Card, Image, ListGroup, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { FaArrowLeft, FaArrowRight, FaAngleDoubleRight } from 'react-icons/fa';
+import {Card, Image, ListGroup, Button} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
+import {FaAngleDoubleRight} from 'react-icons/fa';
 
-function ChannelList({ selectedChannel, scroll, onSendData }) {
+function ChannelList({selectedChannel, scroll, onSendData}) {
     const navigate = useNavigate();
     const channels = useSelector(state => state.channels).channels;
 
@@ -40,14 +40,16 @@ function ChannelList({ selectedChannel, scroll, onSendData }) {
                     <Card key={group} className="mb-5 d-flex">
                         <Card.Header
                             id={`${group.replace(/\s+/g, '-').toLowerCase()}-section`}
-                            className="fs-3 d-flex justify-content-between align-items-center"
+                            className="channel-list-header fs-3 d-flex justify-content-between align-items-center"
                         >
                             {/* Header title with href */}
                             <a
                                 href={`#${group.replace(/\s+/g, '-').toLowerCase()}-section`}
                                 className="text-decoration-none text-dark"
                             >
-                                {group}
+                                <h2>
+                                    {group}
+                                </h2>
                             </a>
                             {/* Read More button */}
                             <Button
@@ -69,7 +71,7 @@ function ChannelList({ selectedChannel, scroll, onSendData }) {
                                         className="d-flex justify-content-between align-items-center channel-item"
                                     >
                                         <div className="d-flex align-items-center">
-                                            <FaAngleDoubleRight size={20} color="#c88f57" className="me-2" />
+                                            <FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>
                                             <p className="channel-name mb-0">
                                                 {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                             </p>

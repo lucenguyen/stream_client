@@ -1,4 +1,4 @@
-import { Button, Container, Navbar, NavDropdown } from "react-bootstrap";
+import {Button, Container, Image, Navbar, NavDropdown} from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
@@ -31,7 +31,7 @@ function Header() {
                     href="/"
                     className={`fs-2 ${darkMode ? "text-white" : "text-dark"}`}
                 >
-                    USA Sport Live
+                    <Image className="logo" src={`${process.env.PUBLIC_URL}/usa_sport.webp`} alt="USA Sport Live"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -80,7 +80,7 @@ function Header() {
                         </li>
                         <li className="nav-item">
                             <a
-                                href="/"
+                                href="/login"
                                 className={`nav-link ${darkMode ? "text-white" : "text-dark"}`}
                             >
                                 <i className="fa fa-user" aria-hidden="true"></i> Sign In

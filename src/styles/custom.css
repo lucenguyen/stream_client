@@ -1,5 +1,6 @@
 /* CSS for Hot News Title */
 .hot-news-title {
+    width: 100%;
     font-family: 'Roboto', Arial, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -7,6 +8,7 @@
     letter-spacing: 0.05em;
     margin-bottom: 10px;
     font-size: 1.5rem;
+    display: flex;
 }
 
 /* CSS for Swiper Container */
@@ -20,6 +22,11 @@
 .swiper-image {
     max-width: 80vw;
     width: 60vw;
+}
+
+.banner-image {
+    /*position: relative;*/
+    width: 100%;
     height: auto;
     cursor: pointer;
     border-radius: 8px;
@@ -40,8 +47,8 @@
     width: 60vw;
     height: 20vh;
     background-color: #a9a6a6;
-    margin:0 0 3% 3%;
-    border-radius: 10px;
+/*     margin:0 0 3% 3%; */
+/*     border-radius: 10px; */
     text-align: center;
 }
 
@@ -49,8 +56,8 @@
     width: 60vw;
     height: 5vh;
     background-color: #a9a6a6;
-    margin:0 0 5% 2%;
-    border-radius: 10px;
+/*     margin:0 0 5% 2%; */
+/*     border-radius: 10px; */
     text-align: center;
 }
 
@@ -58,8 +65,8 @@
     width: 28vw;
     height: 12vh;
     background-color: #a9a6a6;
-    margin:0 0 5% 4%;
-    border-radius: 10px;
+/*     margin:0 0 5% 4%; */
+/*     border-radius: 10px; */
     text-align: center;
 }
 
@@ -271,4 +278,15 @@
     color: #ccc;
     font-size: 14px;
     margin-top: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 50px;
+    /*object-fit: contain;*/
+}
+
+.channel-list-header {
+    background: white !important;
+    padding: 0.75rem 0 0.5rem !important;
 }
