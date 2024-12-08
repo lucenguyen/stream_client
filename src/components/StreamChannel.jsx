@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import ChannelList from "./ChannelList";
 import ClapprPlayer from "./ClapprPlayer";
 import moment from 'moment-timezone';
@@ -8,6 +8,7 @@ import {Button, Card, Col, Container, Image, ListGroup, Row} from "react-bootstr
 import {toast} from "react-toastify";
 import News from "./News";
 import {FaAngleDoubleRight} from "react-icons/fa";
+import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function StreamChannel() {
     const {id, group} = useParams();
@@ -73,7 +74,6 @@ function StreamChannel() {
 
     useEffect(() => {
         if (channels) {
-            console.log(channels)
             const channelsFilter = channels.filter((channel) => channel.group.replace(/\s+/g, "-").toLowerCase() === group);
             const liveChannels = channels.filter((channel) => channel.isLive === true);
             setListChannels(channelsFilter);
@@ -90,6 +90,13 @@ function StreamChannel() {
     }
     return (
         <>
+            <HelmetProvider>
+                <Helmet>
+                    <title>{currentChannel?.name}</title>
+                    <meta name="description" content={`Watch ${currentChannel?.name}`}/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}/${id}`}/>
+                </Helmet>
+            </HelmetProvider>
             <Container fluid className={`px-5 ${!isMobile && !isTablet ? 'w-75' : ''}`}>
                 <Row>
                     {/* Main Content */}
@@ -124,44 +131,45 @@ function StreamChannel() {
 
                     <Col xs={12} md={12} lg={12} className="sidebar">
                         <Card className="m-lg-4 d-flex">
-                        <Card.Header
-                            className="channel-list-header fs-3 d-flex justify-content-between align-items-center"
-                        >
-                            {/* Header title with href */}
+                            <Card.Header
+                                className="channel-list-header fs-3 d-flex justify-content-between align-items-center"
+                            >
+                                {/* Header title with href */}
                                 <h2>
                                     Live Now
                                 </h2>
-                        </Card.Header>
-                        <div className={`channel-list-wrapper`}>
-                            <ListGroup variant="flush">
-                                {liveChannels.map((channel) => (
-                                    <ListGroup.Item
-                                        action
-                                        key={channel.id}
-                                        active={channel === selectedChannel}
-                                        onClick={() => selectedChannel(channel)}
-                                        className="d-flex justify-content-between align-items-center channel-item"
-                                    >
-                                        <div className="d-flex align-items-center">
-                                            <FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>
-                                            <p className="channel-name mb-0">
-                                                {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
-                                            </p>
-                                        </div>
-                                        {channel.isLive && (
-                                            <div className="live-icon-wrapper">
-                                                <Image
-                                                    src={`${process.env.PUBLIC_URL}/live-icon.png`}
-                                                    fluid
-                                                    className="live-icon"
-                                                />
+                            </Card.Header>
+                            <div className={`channel-list-wrapper`}>
+                                <ListGroup variant="flush">
+                                    {liveChannels.map((channel) => (
+                                        <ListGroup.Item
+                                            action
+                                            key={channel.id}
+                                            active={channel === selectedChannel}
+                                            onClick={() => selectedChannelEvent(channel)}
+                                            className="d-flex justify-content-between align-items-center channel-item"
+                                        >
+                                            <div className="d-flex align-items-center">
+                                                <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
+                                                   aria-hidden="true"></i>
+                                                <p className="channel-name mb-0">
+                                                    {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
+                                                </p>
                                             </div>
-                                        )}
-                                    </ListGroup.Item>
-                                ))}
-                            </ListGroup>
-                        </div>
-                    </Card>
+                                            {channel.isLive && (
+                                                <div className="live-icon-wrapper">
+                                                    <Image
+                                                        src={`${process.env.PUBLIC_URL}/live-icon.png`}
+                                                        fluid
+                                                        className="live-icon"
+                                                    />
+                                                </div>
+                                            )}
+                                        </ListGroup.Item>
+                                    ))}
+                                </ListGroup>
+                            </div>
+                        </Card>
                     </Col>
                 </Row>
             </Container>

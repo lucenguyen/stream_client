@@ -132,7 +132,7 @@ function ChannelManagement() {
                 </Helmet>
             </HelmetProvider>
             <div className="d-flex justify-content-end">
-                {sync ? (<Button variant="success" className="m-2" disabled>
+                {sync ? (<Button variant="success" className="m-2" aria-label="" title="" disabled>
                     <Spinner
                         as="span"
                         animation="border"
@@ -141,10 +141,10 @@ function ChannelManagement() {
                         aria-hidden="true"
                     />
                 </Button>) : (
-                    <Button variant="success" onClick={handleSyncChannel} className="m-2"><SyncTwoToneIcon/></Button>)}
+                    <Button variant="success" onClick={handleSyncChannel} className="m-2" aria-label="" title=""><SyncTwoToneIcon/></Button>)}
 
 
-                <Button type="submit" onClick={handleOpen} className="m-2">Add Stream</Button>
+                <Button type="submit" onClick={handleOpen} className="m-2" aria-label="" title="">Add Stream</Button>
             </div>
             <Paper sx={{width: '100%'}}>
                 <DataGrid

@@ -1,17 +1,11 @@
 import moment from 'moment-timezone';
 import {Card, Image, ListGroup, Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
-import {FaAngleDoubleRight} from 'react-icons/fa';
-import {useState} from "react";
 
 function ChannelList({channels, selectedChannel, readMore, onSendData}) {
     const navigate = useNavigate();
-    // const channels = useSelector(state => state.channels).channels;
     const selectChannel = (channel) => {
-        console.log(channel)
-
         if (!channel.isLive) {
             toast.warn("Stream does not available");
         } else {
@@ -60,7 +54,9 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                     className="text-decoration-none"
                                     onClick={() => navigate(`/watch/${group.replace(/\s+/g, '-').toLowerCase()}`)}
                                 >
-                                    Read More
+                                    <span className="text-gray">
+                                        Read More
+                                    </span>
                                 </Button>
                             )}
                         </Card.Header>
@@ -75,7 +71,8 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                         className="d-flex justify-content-between align-items-center channel-item"
                                     >
                                         <div className="d-flex align-items-center">
-                                            <FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>
+                                            {/*<FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>*/}
+                                            <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3" aria-hidden="true"></i>
                                             <p className="channel-name mb-0">
                                                 {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                             </p>

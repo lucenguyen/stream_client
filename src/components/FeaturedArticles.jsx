@@ -46,12 +46,12 @@ const FeaturedArticles = () => {
                     <Col xs={12} md={12} key={index} className="mb-3">
                         <Card
                             onClick={() => handleCardClick(article.link)}
-                            className="featured-article-card d-flex flex-row align-items-center border-0"
+                            className="featured-article-card align-items-center border-0"
                         >
                             <Card.Img
                                 src={article.imageUrl}
                                 alt={article.title}
-                                className="article-image me-3"
+                                className="article-image"
                             />
                             <Card.Body>
                                 <Card.Title className="article-title mb-1">

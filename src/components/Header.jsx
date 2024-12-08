@@ -33,7 +33,7 @@ function Header() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
+                        <li className="nav-item mx-1 mx-md-2 mx-lg-3">
                             <a
                                 href="/"
                                 className={`nav-link ${darkMode ? "text-white" : "text-dark"}`}
@@ -41,7 +41,7 @@ function Header() {
                                 <i className="fa fa-home" aria-hidden="true"></i> Home
                             </a>
                         </li>
-                        <li className="nav-item dropdown">
+                        <li className="nav-item dropdown mx-1 mx-md-2 mx-lg-3">
                             <NavDropdown
                                 title={
                                     <>
@@ -54,6 +54,7 @@ function Header() {
                                 {groups.map((group) => (
                                     <NavDropdown.Item
                                         key={group}
+                                        href={`/watch/${group.replace(/\s+/g, "-").toLowerCase()}`}
                                         onClick={() =>
                                             selectGroup(group)
                                         }
@@ -63,7 +64,7 @@ function Header() {
                                 ))}
                             </NavDropdown>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item mx-1 mx-md-2 mx-lg-3">
                             <a
                                 href="/news"
                                 className={`nav-link ${darkMode ? "text-white" : "text-dark"}`}
@@ -71,7 +72,7 @@ function Header() {
                                 <i className="fa fa-newspaper-o" aria-hidden="true"></i> News
                             </a>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item mx-1 mx-md-2 mx-lg-3">
                             <a
                                 href="/login"
                                 className={`nav-link ${darkMode ? "text-white" : "text-dark"}`}
@@ -79,12 +80,13 @@ function Header() {
                                 <i className="fa fa-user" aria-hidden="true"></i> Sign In
                             </a>
                         </li>
-                        <li className="nav-item pt-1">
+                        <li className="nav-item pt-1 mx-1 mx-md-2 mx-lg-3">
                             <Button
                                 onClick={toggleTheme}
                                 className={`ms-3 p-0 bg-transparent border-0 ${
                                     darkMode ? "text-white" : "text-dark"
                                 }`}
+                                aria-label="" title=""
                             >
                                 {darkMode ? <FaSun /> : <FaMoon />}
                             </Button>

@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import {ThemeContext} from "./components/ThemeContext"; // Import Context
 import {Helmet, HelmetProvider} from "react-helmet-async";
 import ScrollButtons from "./components/ScrollButtons";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
@@ -26,16 +27,12 @@ function App() {
 
     return (
         <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>USA Sport Live | Watch Live Sports</title>
-                </Helmet>
-            </HelmetProvider>
             <div className={darkMode ? "dark-mode" : "light-mode"}>
+
                 <Header/>
                 <div className="theme-toggle">
                 </div>
-                <RouterProvider router={router}/>
+                <RouterProvider router={router} />
                 <ToastContainer
                     position="top-right"
                     autoClose={5000}

@@ -1,9 +1,10 @@
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import ChannelList from "./ChannelList";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import News from "./News";
 import {Col, Container, Row} from "react-bootstrap";
+import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function StreamDetail() {
     const {group} = useParams();
@@ -32,6 +33,13 @@ function StreamDetail() {
     }, [listChannels, group]);
     return (
         <>
+            <HelmetProvider>
+                <Helmet>
+                    <title>WATCH {group.replace("-", " ").toUpperCase()}</title>
+                    <meta name="description" content={`Watch ${group.replace("-", " ")} page`}/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}`}/>
+                </Helmet>
+            </HelmetProvider>
             <Container fluid className={`px-5 ${desktop ? 'w-75' : ''}`}>
                 <Row>
                     {/* Main Content */}

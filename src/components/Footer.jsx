@@ -50,37 +50,37 @@ const Footer = () => {
 
                 <Row className="justify-content-center mb-2">
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaFacebook size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaInstagram size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaTwitter size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaYoutube size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaTiktok size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaSnapchat size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaLinkedin size={15} />
                         </a>
                     </Col>

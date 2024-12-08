@@ -4,9 +4,9 @@ import {Col, Container, Row} from "react-bootstrap";
 import News from "./News";
 import FeaturedArticles from "./FeaturedArticles";
 import ImageBanner from "./Banner";
-import ScrollButtons from "./ScrollButtons";
 import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function Home() {
     const channels = useSelector((state) => state.channels).channels;
@@ -26,6 +26,13 @@ function Home() {
     }, []);
     return (
         <>
+            <HelmetProvider>
+                <Helmet>
+                    <title>Home</title>
+                    <meta name="description" content="Home Page"/>
+                    <link rel="canonical" href="https://usasport.live/"/>
+                </Helmet>
+            </HelmetProvider>
             <Container fluid className={`px-5 ${desktop ? 'w-75' : ''}`}>
                 <Row>
                     {/* Main Content */}
@@ -55,6 +62,7 @@ function Home() {
                     </Col>
                 </Row>
             </Container>
+
         </>
     );
 }
