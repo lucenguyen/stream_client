@@ -86,7 +86,7 @@ function StreamChannel() {
         if (channel && !channel.isLive) {
             toast.warn("Stream does not available");
         } else {
-            navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.id}`);
+            navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").toLowerCase()}`);
         }
     }
     return (
