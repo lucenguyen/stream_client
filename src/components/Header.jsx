@@ -49,6 +49,7 @@ function Header() {
                                     </>
                                 }
                                 id="watch-dropdown"
+                                rel="nofollow"
                                 className={darkMode ? "text-white" : "text-dark"}
                             >
                                 {groups.map((group) => (
@@ -86,7 +87,7 @@ function Header() {
                                 className={`ms-3 p-0 bg-transparent border-0 ${
                                     darkMode ? "text-white" : "text-dark"
                                 }`}
-                                aria-label="" title=""
+                                aria-label={!darkMode ? "dark mode" : "light mode"} title={!darkMode ? "dark mode" : "light mode"}
                             >
                                 {darkMode ? <FaSun /> : <FaMoon />}
                             </Button>

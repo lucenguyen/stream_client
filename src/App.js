@@ -20,11 +20,6 @@ function App() {
         dispatch(fetchChannels());
     }, [dispatch]);
 
-    useEffect(() => {
-        initGA(); // Khởi tạo Google Analytics
-        logPageView(); // Gửi pageview khi ứng dụng được tải
-    }, []);
-
     return (
         <>
             <div className={darkMode ? "dark-mode" : "light-mode"}>

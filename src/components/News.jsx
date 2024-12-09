@@ -48,7 +48,7 @@ const News = ({ scroll }) => {
                                                         href={item.links?.web?.href || "#"}
                                                         className="text-decoration-none text-primary"
                                                         target="_blank"
-                                                        rel="noopener noreferrer"
+                                                        rel="noopener noreferrer nofollow"
                                                     >
                                                         Read More
                                                     </a>

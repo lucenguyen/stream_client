@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
         element: <Home></Home>
     },
     {
-        path: "watch/:group/:id",
+        path: "watch/:group/:name",
         element: <StreamChannel></StreamChannel>
     },
     {

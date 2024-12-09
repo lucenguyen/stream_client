@@ -11,7 +11,7 @@ import {FaAngleDoubleRight} from "react-icons/fa";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function StreamChannel() {
-    const {id, group} = useParams();
+    const {name, group} = useParams();
     const navigate = useNavigate();
     const [selectedChannel, setSelectedChannel] = useState();
     const [sourceLive, setSourceLive] = useState();
@@ -48,7 +48,7 @@ function StreamChannel() {
     }, []);
 
     useEffect(() => {
-        const channel = channels.find((channel) => channel.id.toString() === id);
+        const channel = channels.find((channel) => channel.name.replace(/\s+/g, '-').toLowerCase() === name);
         if (channel) {
             setCurrentChannel(channel);
             setLogo(channel.logoUrl);
@@ -66,11 +66,12 @@ function StreamChannel() {
             }
             channel.programmes = programmes;
             setSelectedChannel(channel);
+            const id = channel.id;
             setSourceLive(`https://usasport.live/api/m3u8/${id}/${id}.m3u8`)
         } else {
             navigate("/");
         }
-    }, [channels, id, navigate]);
+    }, [channels, name, navigate]);
 
     useEffect(() => {
         if (channels) {
@@ -94,7 +95,7 @@ function StreamChannel() {
                 <Helmet>
                     <title>{currentChannel?.name}</title>
                     <meta name="description" content={`Watch ${currentChannel?.name}`}/>
-                    <link rel="canonical" href={`https://usasport.live/watch/${group}/${id}`}/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
                 </Helmet>
             </HelmetProvider>
             <Container fluid className={`px-5 ${!isMobile && !isTablet ? 'w-75' : ''}`}>
