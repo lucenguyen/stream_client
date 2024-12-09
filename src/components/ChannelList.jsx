@@ -70,16 +70,16 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                         onClick={() => selectChannel(channel)}
                                         className="d-flex justify-content-start align-items-center channel-item"
                                     >
-                                        <a className="d-flex text-dark align-items-center text-decoration-none text-primary"
-                                           href={`/watch/${group.replace(/\s+/g, '-').toLowerCase()}/${channel.name.replace(/\s+/g, '-').toLowerCase()}`}
-                                           >
+                                        <div
+                                            className="d-flex text-dark align-items-center text-decoration-none text-primary"
+                                        >
                                             {/*<FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>*/}
                                             <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
                                                aria-hidden="true"></i>
                                             <p className="channel-name mb-0">
                                                 {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                             </p>
-                                        </a>
+                                        </div>
                                         {channel.isLive && (
                                             <div className="live-icon-wrapper">
                                                 <Image
