@@ -28,8 +28,6 @@ function Home() {
         <>
             <HelmetProvider>
                 <Helmet>
-                    <meta name="description" content="Home Page"/>
-                    <meta name="robots" content="follow, index"/>
                     <meta name="DC.creator" content="USA Sport Live"/>
                     <meta name="DC.title" content="USA Sport Live | Watch Live Sports"/>
                     <meta name="DC.publisher" content="USA Sport Live"/>
