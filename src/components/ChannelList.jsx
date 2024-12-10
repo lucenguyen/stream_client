@@ -71,7 +71,8 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                         onClick={() => selectChannel(channel)}
                                         className="d-flex justify-content-start align-items-center channel-item content-dark-mode"
                                     >
-                                        <div
+                                        <a
+                                            href={`/watch/${channel.group.replace("-", " ").toUpperCase()}/${channel.name.replace(/\s+/g, "-").toLowerCase()}`} target="_blank" rel="noopener noreferrer"
                                             className="d-flex text-dark align-items-center text-decoration-none text-primary"
                                         >
                                             {/*<FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>*/}
@@ -83,7 +84,7 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                                 : ''}
 
                                             </p>
-                                        </div>
+                                        </a>
                                         {channel.isLive && (
                                             <div className="live-icon-wrapper">
                                                 <Image

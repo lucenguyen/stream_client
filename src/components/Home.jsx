@@ -29,6 +29,25 @@ function Home() {
             <HelmetProvider>
                 <Helmet>
                     <meta name="description" content="Home Page"/>
+                    <meta name="robots" content="follow, index"/>
+                    <meta name="DC.creator" content="USA Sport Live"/>
+                    <meta name="DC.title" content="USA Sport Live | Watch Live Sports"/>
+                    <meta name="DC.publisher" content="USA Sport Live"/>
+                    <meta name="DC.created" content="2024"/>
+                    <meta name="DC.description" content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta property="og:locale" content="en_US"/>
+                    <meta property="og:title" content="USA Sport Live | Watch Live Sports"/>
+                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:url" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:site_name" content="USA Sport Live"/>
+                    <meta property="og:description" content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta name="twitter:title" content="USA Sport Live | Watch Live Sports"/>
+                    <meta name="twitter:description" content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <link rel="canonical" href="https://usasport.live/"/>
+                    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+                    <meta name="geo.region" content="US"/>
                     <link rel="canonical" href="https://usasport.live/"/>
                     <title>USA Sport Live | Watch Live Sports</title>
                 </Helmet>

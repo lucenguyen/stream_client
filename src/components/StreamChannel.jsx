@@ -93,6 +93,26 @@ function StreamChannel() {
         <>
             <HelmetProvider>
                 <Helmet>
+                    <meta name="DC.publisher" content="USA Sport Live"/>
+                    <meta name="DC.created" content="2024"/>
+                    <meta name="DC.description"
+                          content={`Watch ${currentChannel?.name}`}/>
+                    <meta property="og:locale" content="en_US"/>
+                    <meta property="og:title" content={currentChannel?.name}/>
+                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:url" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:site_name" content="USA Sport Live"/>
+                    <meta property="og:description"
+                          content={`Watch ${currentChannel?.name}`}/>
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta name="twitter:title" content={currentChannel?.name}/>
+                    <meta name="twitter:description"
+                          content={`Watch ${currentChannel?.name}`}/>
+                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
+                    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+                    <meta name="geo.region" content="US"/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
                     <title>{currentChannel?.name}</title>
                     <meta name="description" content={`Watch ${currentChannel?.name}`}/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
@@ -135,7 +155,7 @@ function StreamChannel() {
                             <Card.Header
                                 className="channel-list-header fs-3 d-flex justify-content-between align-items-center"
                             >
-                                {/* Header title with href */}
+                            {/* Header title with href */}
                                 <h2>
                                     Live Now
                                 </h2>

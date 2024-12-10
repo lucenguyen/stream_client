@@ -35,6 +35,27 @@ function StreamDetail() {
         <>
             <HelmetProvider>
                 <Helmet>
+                    <meta name="DC.title" content={`WATCH ${group.replace("-", " ").toUpperCase()}`}/>
+                    <meta name="DC.publisher" content="USA Sport Live"/>
+                    <meta name="DC.created" content="2024"/>
+                    <meta name="DC.description"
+                          content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta property="og:locale" content="en_US"/>
+                    <meta property="og:title" content={`WATCH ${group.replace("-", " ").toUpperCase()}`}/>
+                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:url" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:site_name" content="USA Sport Live"/>
+                    <meta property="og:description"
+                          content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta name="twitter:title" content={`WATCH ${group.replace("-", " ").toUpperCase()}`}/>
+                    <meta name="twitter:description"
+                          content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}`}/>
+                    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+                    <meta name="geo.region" content="US"/>
+                    <link rel="canonical" href={`https://usasport.live/watch/${group}`}/>
                     <title>WATCH {group.replace("-", " ").toUpperCase()}</title>
                     <meta name="description" content={`Watch ${group.replace("-", " ")} page`}/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}`}/>
