@@ -24,15 +24,19 @@ const ImageBanner = () => {
     return (
         <div className="w-100">
             <div className="hot-news-title">
-                <h1>Hot news</h1>
+                <h1>USA Sport Live | Watch free streaming</h1>
             </div>
-
+            <div className="banner-news"  >
             <Image
                 src={bannerData[0].imageUrl}
                 alt={bannerData[0].altText}
                 className="banner-image"
                 onClick={() => handleBannerClick(bannerData[0].link)}
             />
+            <a className="title-banner" href={bannerData[0].link} target="_blank" rel="noopener noreferrer">
+                {bannerData[0].altText}
+            </a>
+            </div>
         </div>
     );
 };
