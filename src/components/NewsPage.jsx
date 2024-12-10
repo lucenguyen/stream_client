@@ -42,29 +42,34 @@ const NewsPage = () => {
         <>
             <HelmetProvider>
                 <Helmet>
-                    <meta name="description" content="News"/>
                     <meta name="robots" content="follow, index"/>
                     <meta name="DC.creator" content="USA Sport Live"/>
-                    <meta name="DC.title" content="USA Sport Live | Watch Live Sports"/>
+                    <meta name="DC.title" content="News"/>
                     <meta name="DC.publisher" content="USA Sport Live"/>
                     <meta name="DC.created" content="2024"/>
                     <meta name="DC.description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content="News"/>
-                    <meta property="og:https://usasport.live" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
-                    <meta property="og:https://usasport.live" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:image"
+                          content={`https://usasport.live/usa_sport.webp`}/>
+                    <meta property="og:url" content={`https://usasport.live/usa_sport.webp`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
-                    <meta property="og:description" content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <meta property="og:description"
+                          content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta name="twitter:card" content="summary_large_image"/>
                     <meta name="twitter:title" content="News"/>
                     <meta name="twitter:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
-                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
-                    <link rel="canonical" href="https://usasport.live/news"/>
+                    <meta name="twitter:image"
+                          content={`https://usasport.live/usa_sport.webp`}/>
+                    <link rel="canonical" href="https://usasport.live/"/>
                     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
                     <meta name="geo.region" content="US"/>
                     <title>News</title>
+                    <meta name="description"
+                          content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
+                    <link rel="canonical" href="https://usasport.live/news"/>
                 </Helmet>
             </HelmetProvider>
             <Container className="news-page-container my-4">

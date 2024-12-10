@@ -36,7 +36,7 @@ const Footer = () => {
                 <Row className="justify-content-center mb-4">
                     {teamLogos.map((team, index) => (
                         <Col key={index} xs={2} md={1} className="d-flex justify-content-center">
-                            <a href={team.url} target="_blank" rel="noopener noreferrer" className="footer-logo-link">
+                            <a href={team.url} target="_blank" rel="noopener noreferrer nofollow" className="footer-logo-link">
                                 <Image
                                     src={`${process.env.PUBLIC_URL}/logo-sport/${team.name}.png`}
                                     alt={`${team.name} logo`}
@@ -50,37 +50,37 @@ const Footer = () => {
 
                 <Row className="justify-content-center mb-2">
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.facebook.com/NFL/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaFacebook size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.instagram.com/nfl/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaInstagram size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://twitter.com/nfl/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaTwitter size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.youtube.com/@USASportLive" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaYoutube size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.tiktok.com/@nfl" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaTiktok size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.snapchat.com/add/nfl/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaSnapchat size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="#" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.linkedin.com/company/national-football-league/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaLinkedin size={15} />
                         </a>
                     </Col>

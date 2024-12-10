@@ -28,7 +28,7 @@ function Header() {
                     href="/"
                     className={`fs-2 ${darkMode ? "text-white" : "text-dark"}`}
                 >
-                    <Image className="logo" src={`${process.env.PUBLIC_URL}/usa_sport.ico`} alt="USA Sport Live"/>
+                    <Image className="logo" src={`${process.env.PUBLIC_URL}${darkMode ? "/usa_sport_white.webp" : "/usa_sport.webp"}`} alt="USA Sport Live"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">

@@ -26,7 +26,7 @@ const News = ({ scroll }) => {
         <Container className="news-container my-4 content-dark-mode">
             <Row>
                 <Col>
-                    <h4 className="news-title mb-3">NEWS</h4>
+                    <h3 className="news-title mb-3">NEWS</h3>
                     <div className="news-list ">
                         {newsData && newsData.length > 0 ? (
                             newsData.slice(0, 3).map((item, index) => (
