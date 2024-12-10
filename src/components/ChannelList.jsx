@@ -14,6 +14,7 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
             } else {
 
                 navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`);
+                window.scrollTo(0, 0);
             }
         }
     };
