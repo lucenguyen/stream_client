@@ -45,7 +45,7 @@ const ScrollButtons = () => {
                         border: "none",
                     }}
                 >
-                    <FaChevronUp size={30} color="#c88f57" />
+                    <FaChevronUp size={30} color="#3a3870" />
                 </Button>
             )}
 
@@ -63,7 +63,7 @@ const ScrollButtons = () => {
                         border: "none",
                     }}
                 >
-                    <FaChevronDown size={30} color="#c88f57" />
+                    <FaChevronDown size={30} color="#3a3870" />
                 </Button>
             )}
         </div>

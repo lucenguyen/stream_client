@@ -52,8 +52,8 @@ const NewsPage = () => {
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content="News"/>
-                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
-                    <meta property="og:url" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:https://usasport.live" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:https://usasport.live" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description" content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta name="twitter:card" content="summary_large_image"/>
@@ -64,7 +64,6 @@ const NewsPage = () => {
                     <link rel="canonical" href="https://usasport.live/news"/>
                     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
                     <meta name="geo.region" content="US"/>
-                    <link rel="canonical" href="https://usasport.live/news"/>
                     <title>News</title>
                 </Helmet>
             </HelmetProvider>
