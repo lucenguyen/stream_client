@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://usasport.live/sitemap.xml
-robots.txt

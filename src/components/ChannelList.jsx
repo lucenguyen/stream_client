@@ -12,7 +12,8 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
             if (onSendData) {
                 onSendData(channel);
             } else {
-                navigate(`/watch/${channel.group.replace(/\s+/g, '-').toLowerCase()}/${channel.name.replace(/\s+/g, '-').toLowerCase()}`);
+
+                navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`);
             }
         }
     };
@@ -72,18 +73,19 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                         className="d-flex justify-content-start align-items-center channel-item content-dark-mode"
                                     >
                                         <a
-                                            href={`/watch/${channel.group.replace("-", " ").toUpperCase()}/${channel.name.replace(/\s+/g, "-").toLowerCase()}`} target="_blank" rel="noopener noreferrer"
+                                            href={`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`}
+                                            rel="noopener noreferrer"
                                             className="d-flex text-dark align-items-center text-decoration-none text-primary"
                                         >
                                             {/*<FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>*/}
                                             <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
                                                aria-hidden="true"></i>
-                                            <p className="channel-name mb-0">
+                                            <h4 className="channel-name mb-0">
                                                 {channel.name} {channel.startTime ?
                                                 `: ${moment.utc(channel.startTime).tz("America/New_York").format('YYYY/MM/DD, h:mm:ss A [UTC]Z z')} (New York Time)`
                                                 : ''}
 
-                                            </p>
+                                            </h4>
                                         </a>
                                         {channel.isLive && (
                                             <div className="live-icon-wrapper">

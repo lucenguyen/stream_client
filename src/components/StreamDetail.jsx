@@ -42,8 +42,8 @@ function StreamDetail() {
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content={`WATCH ${group.replace("-", " ").toUpperCase()}`}/>
-                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
-                    <meta property="og:url" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:image" content={`https://usasport.live/usa_sport.webp`}/>
+                    <meta property="og:url" content={`https://usasport.live/usa_sport.webp`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
@@ -51,7 +51,7 @@ function StreamDetail() {
                     <meta name="twitter:title" content={`WATCH ${group.replace("-", " ").toUpperCase()}`}/>
                     <meta name="twitter:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
-                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta name="twitter:image" content={`https://usasport.live/usa_sport.webp`}/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}`}/>
                     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
                     <meta name="geo.region" content="US"/>

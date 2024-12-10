@@ -7,7 +7,6 @@ import {useSelector} from "react-redux";
 import {Button, Card, Col, Container, Image, ListGroup, Row} from "react-bootstrap";
 import {toast} from "react-toastify";
 import News from "./News";
-import {FaAngleDoubleRight} from "react-icons/fa";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function StreamChannel() {
@@ -22,12 +21,6 @@ function StreamChannel() {
     const {channels} = useSelector((state) => state.channels);
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setTablet] = useState(false);
-
-    useEffect(() => {
-        if (channels.length === 0) {
-            navigate("/");
-        }
-    }, [channels, navigate]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -48,7 +41,7 @@ function StreamChannel() {
     }, []);
 
     useEffect(() => {
-        const channel = channels.find((channel) => channel.name.replace(/\s+/g, '-').toLowerCase() === name);
+        const channel = channels.find((channel) => `${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html` === name);
         if (channel) {
             setCurrentChannel(channel);
             setLogo(channel.logoUrl);
@@ -68,9 +61,10 @@ function StreamChannel() {
             setSelectedChannel(channel);
             const id = channel.id;
             setSourceLive(`https://usasport.live/api/m3u8/${id}/${id}.m3u8`)
-        } else {
-            navigate("/");
         }
+        // else {
+        //     navigate("/");
+        // }
     }, [channels, name, navigate]);
 
     useEffect(() => {
@@ -86,7 +80,7 @@ function StreamChannel() {
         if (channel && !channel.isLive) {
             toast.warn("Stream does not available");
         } else {
-            navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").toLowerCase()}`);
+            navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").toLowerCase().replace("vs.", "vs")}.html`);
         }
     }
     return (
@@ -99,8 +93,8 @@ function StreamChannel() {
                           content={`Watch ${currentChannel?.name}`}/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content={currentChannel?.name}/>
-                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
-                    <meta property="og:url" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta property="og:image" content={`https://usasport.live/usa_sport.webp`}/>
+                    <meta property="og:url" content={`https://usasport.live/usa_sport.webp`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description"
                           content={`Watch ${currentChannel?.name}`}/>
@@ -108,7 +102,7 @@ function StreamChannel() {
                     <meta name="twitter:title" content={currentChannel?.name}/>
                     <meta name="twitter:description"
                           content={`Watch ${currentChannel?.name}`}/>
-                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.webp`}/>
+                    <meta name="twitter:image" content={`https://usasport.live/usa_sport.webp`}/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
                     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
                     <meta name="geo.region" content="US"/>
