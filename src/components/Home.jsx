@@ -36,8 +36,8 @@ function Home() {
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content="USA Sport Live | Watch Live Sports"/>
-                    <meta property="og:image" content={`https://usasport.live/usa_sport.webp`}/>
-                    <meta property="og:url" content={`https://usasport.live/usa_sport.webp`}/>
+                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.png`}/>
+                    <meta property="og:url" content={`https://usasport.live/`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
@@ -45,9 +45,8 @@ function Home() {
                     <meta name="twitter:title" content="USA Sport Live | Watch Live Sports"/>
                     <meta name="twitter:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
-                    <meta name="twitter:image" content={`https://usasport.live/usa_sport.webp`}/>
-                    <link rel="canonical" href="https://usasport.live/"/>
-                    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.png`}/>
+                    <link rel="shortcut icon" type="image/x-icon" href={`${process.env.PUBLIC_URL}/usa_sport.ico`}/>
                     <meta name="geo.region" content="US"/>
                     <title>USA Sport Live | Watch Live Sports</title>
                     <meta name="description"

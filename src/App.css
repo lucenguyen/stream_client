@@ -81,7 +81,7 @@ button {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 10px;
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     display: flex;
 }
 
@@ -384,4 +384,9 @@ button {
 
 .text-gray{
     color: #6c757d !important;
+}
+
+.channel-item.active {
+  background-color: #f5e2e4 !important;/* Màu nền khi active */
+  /*color: #fff; !* Màu chữ khi active *!*/
 }
