@@ -12,7 +12,6 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
             if (onSendData) {
                 onSendData(channel);
             } else {
-
                 navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`);
             }
         }
@@ -69,24 +68,20 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                                         action
                                         key={channel.id}
                                         active={channel === selectedChannel}
-                                        onClick={() => selectChannel(channel)}
+                                        href={`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`}
                                         className="d-flex justify-content-start align-items-center channel-item content-dark-mode"
+                                        rel="noopener noreferrer"
                                     >
-                                        <a
-                                            href={`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`}
-                                            rel="noopener noreferrer"
+                                        <div
                                             className="d-flex text-dark align-items-center text-decoration-none text-primary"
                                         >
                                             {/*<FaAngleDoubleRight size={20} color="#c88f57" className="me-2"/>*/}
                                             <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
                                                aria-hidden="true"></i>
                                             <h4 className="channel-name mb-0">
-                                                {channel.name} {channel.startTime ?
-                                                `: ${moment.utc(channel.startTime).tz("America/New_York").format('YYYY/MM/DD, h:mm:ss A [UTC]Z z')} (New York Time)`
-                                                : ''}
-
+                                                {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                             </h4>
-                                        </a>
+                                        </div>
                                         {channel.isLive && (
                                             <div className="live-icon-wrapper">
                                                 <Image
