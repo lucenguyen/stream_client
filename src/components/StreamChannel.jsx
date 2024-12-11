@@ -41,7 +41,7 @@ function StreamChannel() {
     }, []);
 
     useEffect(() => {
-        const channel = channels.find((channel) => `${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html` === name);
+        const channel = channels.find((channel) => `${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}-${channel.id}.html` === name);
         if (channel) {
             setCurrentChannel(channel);
             setLogo(channel.logoUrl);
@@ -77,11 +77,7 @@ function StreamChannel() {
     }, [channels, group]);
 
     const selectedChannelEvent = (channel) => {
-        if (channel && !channel.isLive) {
-            toast.warn("Stream does not available");
-        } else {
-            navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").toLowerCase().replace("vs.", "vs")}.html`);
-        }
+        toast.warn("Get ready! The live stream will go live 1 hour before the match kicks off. Don’t miss it!");
     }
     return (
         <>
@@ -93,8 +89,8 @@ function StreamChannel() {
                           content={`Watch ${currentChannel?.name}`}/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content={currentChannel?.name}/>
-                    <meta property="og:image" content={`https://usasport.live/usa_sport.webp`}/>
-                    <meta property="og:url" content={`https://usasport.live/usa_sport.webp`}/>
+                    <meta property="og:image" content={`https://usasport.live/usa_sport.png`}/>
+                    <meta property="og:url" content={`https://usasport.live/watch/${group}/${name}`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description"
                           content={`Watch ${currentChannel?.name}`}/>
@@ -102,9 +98,8 @@ function StreamChannel() {
                     <meta name="twitter:title" content={currentChannel?.name}/>
                     <meta name="twitter:description"
                           content={`Watch ${currentChannel?.name}`}/>
-                    <meta name="twitter:image" content={`https://usasport.live/usa_sport.webp`}/>
-                    <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
-                    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+                    <meta name="twitter:image" content={`https://usasport.live/usa_sport.png`}/>
+                    <link rel="shortcut icon" type="image/x-icon" href="https://usasport.live/usa_sport.ico"/>
                     <meta name="geo.region" content="US"/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
                     <title>{currentChannel?.name}</title>
@@ -149,7 +144,7 @@ function StreamChannel() {
                             <Card.Header
                                 className="channel-list-header fs-3 d-flex justify-content-between align-items-center"
                             >
-                            {/* Header title with href */}
+                                {/* Header title with href */}
                                 <h2>
                                     Live Now
                                 </h2>
@@ -161,25 +156,24 @@ function StreamChannel() {
                                             action
                                             key={channel.id}
                                             active={channel === selectedChannel}
-                                            onClick={() => selectedChannelEvent(channel)}
-                                            className="d-flex justify-content-between align-items-center channel-item"
+                                            href={`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}-${channel.id}.html`}
+                                            className="d-flex justify-content-start align-items-center channel-item content-dark-mode"
+                                            rel="noopener noreferrer"
                                         >
-                                            <div className="d-flex align-items-center">
+                                            <div className="d-flex text-dark align-items-center text-decoration-none">
                                                 <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
                                                    aria-hidden="true"></i>
-                                                <p className="channel-name mb-0">
+                                                <h4 className="channel-name mb-0">
                                                     {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
-                                                </p>
+                                                </h4>
                                             </div>
-                                            {channel.isLive && (
-                                                <div className="live-icon-wrapper">
-                                                    <Image
-                                                        src={`${process.env.PUBLIC_URL}/live-icon.png`}
-                                                        fluid
-                                                        className="live-icon"
-                                                    />
-                                                </div>
-                                            )}
+                                            <div className="live-icon-wrapper">
+                                                <Image
+                                                    src={`${process.env.PUBLIC_URL}/live-icon.png`}
+                                                    fluid
+                                                    className="live-icon"
+                                                />
+                                            </div>
                                         </ListGroup.Item>
                                     ))}
                                 </ListGroup>
