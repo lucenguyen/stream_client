@@ -89,7 +89,7 @@ function StreamChannel() {
                           content={`Watch ${currentChannel?.name}`}/>
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content={currentChannel?.name}/>
-                    <meta property="og:image" content={`https://usasport.live/usa_sport.png`}/>
+                    <meta property="og:image" content={`${process.env.PUBLIC_URL}/usa_sport.png`}/>
                     <meta property="og:url" content={`https://usasport.live/watch/${group}/${name}`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description"
@@ -98,8 +98,8 @@ function StreamChannel() {
                     <meta name="twitter:title" content={currentChannel?.name}/>
                     <meta name="twitter:description"
                           content={`Watch ${currentChannel?.name}`}/>
-                    <meta name="twitter:image" content={`https://usasport.live/usa_sport.png`}/>
-                    <link rel="shortcut icon" type="image/x-icon" href="https://usasport.live/usa_sport.ico"/>
+                    <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/usa_sport.png`}/>
+                    <link rel="shortcut icon" type="image/x-icon" href={`${process.env.PUBLIC_URL}/usa_sport.ico`}/>
                     <meta name="geo.region" content="US"/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
                     <title>{currentChannel?.name}</title>

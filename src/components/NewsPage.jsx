@@ -52,7 +52,7 @@ const NewsPage = () => {
                     <meta property="og:locale" content="en_US"/>
                     <meta property="og:title" content="News"/>
                     <meta property="og:image"
-                          content={`https://usasport.live/usa_sport.png`}/>
+                          content={`${process.env.PUBLIC_URL}/usa_sport.png`}/>
                     <meta property="og:url" content={`https://usasport.live/news`}/>
                     <meta property="og:site_name" content="USA Sport Live"/>
                     <meta property="og:description"
@@ -62,8 +62,8 @@ const NewsPage = () => {
                     <meta name="twitter:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
                     <meta name="twitter:image"
-                          content={`https://usasport.live/usa_sport.png`}/>
-                    <link rel="shortcut icon" type="image/x-icon" href="https://usasport.live/usa_sport.ico"/>
+                          content={`${process.env.PUBLIC_URL}/usa_sport.png`}/>
+                    <link rel="shortcut icon" type="image/x-icon" href={`${process.env.PUBLIC_URL}/usa_sport.ico`}/>
                     <meta name="geo.region" content="US"/>
                     <title>News</title>
                     <meta name="description"
