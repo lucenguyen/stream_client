@@ -1,6 +1,16 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaTiktok, FaSnapchat, FaLinkedin } from 'react-icons/fa';
+import {
+    FaFacebook,
+    FaInstagram,
+    FaTwitter,
+    FaYoutube,
+    FaTiktok,
+    FaSnapchat,
+    FaLinkedin,
+    FaMedium, FaTumblr, FaPrint, FaMastodon
+} from 'react-icons/fa';
+import {FaThreads} from "react-icons/fa6";
 
 const Footer = () => {
     const teamLogos = [
@@ -50,17 +60,17 @@ const Footer = () => {
 
                 <Row className="justify-content-center mb-2">
                     <Col xs="auto">
-                        <a href="https://www.facebook.com/NFL/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.facebook.com/LiveUsaSport/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaFacebook size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://www.instagram.com/nfl/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://www.instagram.com/usasport.live" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaInstagram size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://twitter.com/nfl/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://x.com/LiveUsasport" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaTwitter size={15} />
                         </a>
                     </Col>
@@ -70,20 +80,41 @@ const Footer = () => {
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://www.tiktok.com/@nfl" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                        <a href="https://tiktok.com/@usasportlive" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
                             <FaTiktok size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://www.snapchat.com/add/nfl/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
-                            <FaSnapchat size={15} />
+                        <a href="https://www.threads.net/@usasport.live" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                            <FaThreads size={15} />
                         </a>
                     </Col>
                     <Col xs="auto">
-                        <a href="https://www.linkedin.com/company/national-football-league/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
-                            <FaLinkedin size={15} />
+                        <a href="https://medium.com/@usasport.live" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                            <FaMedium size={15} />
                         </a>
                     </Col>
+                    <Col xs="auto">
+                        <a href="https://www.tumblr.com/usasportlive" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                            <FaTumblr size={15} />
+                        </a>
+                    </Col>
+                    <Col xs="auto">
+                        <a href="https://www.pinterest.com/usasportlive/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">
+                            <i className="fa fa-pinterest" aria-hidden="true"></i>
+                        </a>
+                    </Col>
+                    <Col xs="auto">
+                        <a href="https://mastodon.social/@usasport" target="_blank" rel="noopener noreferrer nofollow"
+                           className="footer-social-link">
+                            <FaMastodon size={15}/>
+                        </a>
+                    </Col>
+                    {/*<Col xs="auto">*/}
+                    {/*    <a href="https://www.linkedin.com/company/national-football-league/" target="_blank" rel="noopener noreferrer nofollow" className="footer-social-link">*/}
+                    {/*        <FaLinkedin size={15} />*/}
+                    {/*    </a>*/}
+                    {/*</Col>*/}
                 </Row>
 
                 <Row className="text-center">

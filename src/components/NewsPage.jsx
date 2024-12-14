@@ -110,10 +110,9 @@ const NewsPage = () => {
                             See More
                         </Button>
                     </div>
-                )}\
+                )}
             </Container>
         </>
-
     );
 };
 
