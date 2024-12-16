@@ -37,9 +37,9 @@ function AddStream({chanel, emitSaveStream}) {
             }
             if (chanel) {
                 newStream.id = chanel.id;
-                dispatch(updateChannel(newStream));
+                 await dispatch(updateChannel(newStream));
             } else {
-                dispatch(addChannel(newStream));
+                await dispatch(addChannel(newStream));
             }
             emitSaveStream();
         }

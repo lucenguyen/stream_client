@@ -1,17 +1,36 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Clappr from 'clappr';
 import '../App.css';
 import './ClapprPlayer.css';
+import GetTokenAPI from "../api/GetToken";
 
-const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
+const ClapprPlayer = ({source, img = '', width = '100%', height = '70vh'}) => {
     const playerRef = useRef(null);
+    const [hlsUrl, setHlsUrl] = useState("");
+    useEffect(() => {
+        const fetchHlsUrl = async () => {
+            try {
+                const uri = {
+                    uri: source,
+                }
+                const response = await GetTokenAPI.getToken(uri)
+                const jwt = response.data;
+                const hls_url = "https://usasport.live" + source + "?token=" + jwt
+                setHlsUrl(hls_url);
+            } catch (error) {
+                console.error("Error fetching HLS URL:", error);
+            }
+        };
+        fetchHlsUrl();
+    }, [source]);
+
     useEffect(() => {
         // Kiểm tra xem playerRef đã tồn tại chưa
         if (!playerRef.current) return;
 
         // Khởi tạo player Clappr
         const player = new Clappr.Player({
-            source: source,
+            source: hlsUrl,
             parent: playerRef.current,
             parentId: '#player',
             autoPlay: true,
@@ -22,6 +41,29 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
             poster: `${img}`
         });
 
+        player.on(Clappr.Events.PLAYER_READY, () => {
+            player.play();
+        });
+
+        player.on(Clappr.Events.PLAYER_ERROR, async (error) => {
+            console.error("Player error:", error);
+            // Kiểm tra nếu lỗi là do token hết hạn (403)
+            if (error && error.message && error.message.includes("403")) {
+                try {
+                    console.log("Refreshing token...");
+                    const uri = {uri: source};
+                    const response = await GetTokenAPI.getToken(uri);
+                    const newJwt = response.data;
+                    const newHlsUrl = "https://usasport.live" + source + "?token=" + newJwt;
+
+                    // Cập nhật URL mới và phát lại video
+                    setHlsUrl(newHlsUrl);
+                } catch (refreshError) {
+                    console.error("Error refreshing token:", refreshError);
+                }
+            }
+        })
+
         // player.on(Clappr.Events.PLAYER_PLAY, () => {
         //     setIsplay(true);
         // });
@@ -30,7 +72,7 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
         // });
         // player.on(Clappr.Events.PLAYER_STOP, () => {
         //     console.log('stop');
-            
+
         //     setIsplay(false);
         // });
         // player.on(Clappr.Events.PLAYER_ERROR , () => {
@@ -40,11 +82,11 @@ const ClapprPlayer = ({source, img='', width = '100%', height = '70vh'}) => {
         return () => {
             player.destroy();
         };
-    }, [source, width, height,img]); // Gọi lại khi source, width hoặc height thay đổi
+    }, [hlsUrl, width, height, img]); // Gọi lại khi source, width hoặc height thay đổi
 
     return (
         <div>
-            {img !== '' ? <div id='player' ref={playerRef} /> :  ''}
+            {img !== '' ? <div id='player' ref={playerRef}/> : ''}
         </div>
     )
 };

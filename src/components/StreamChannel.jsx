@@ -45,22 +45,9 @@ function StreamChannel() {
         if (channel) {
             setCurrentChannel(channel);
             setLogo(channel.logoUrl);
-            const programmes = channel.programmes ? channel.programmes : [];
-            let idProg = 0;
-            for (const prog of programmes) {
-                const utcStart = moment(prog.start, 'YYYYMMDDHHmmss Z')
-                const utcStop = moment(prog.stop, 'YYYYMMDDHHmmss Z')
-                const localTimeStart = utcStart.tz(moment.tz.guess()).format('YYYY-MM-DD HH:mm:ss');
-                const localTimeStop = utcStop.tz(moment.tz.guess()).format('YYYY-MM-DD HH:mm:ss');
-                prog.start = localTimeStart;
-                prog.stop = localTimeStop;
-                prog.timeZoneOffset = utcStart.tz(moment.tz.guess()).format("Z");
-                prog.id = idProg++;
-            }
-            channel.programmes = programmes;
             setSelectedChannel(channel);
             const id = channel.id;
-            setSourceLive(`https://usasport.live/api/m3u8/${id}/${id}.m3u8`)
+            setSourceLive(`/api/m3u8/${id}/${id}.m3u8`)
         }
         // else {
         //     navigate("/");
@@ -98,8 +85,10 @@ function StreamChannel() {
                     <meta name="twitter:title" content={currentChannel?.name}/>
                     <meta name="twitter:description"
                           content={`Watch ${currentChannel?.name}`}/>
-                    <meta name="twitter:image" content={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.png`}/>
-                    <link rel="shortcut icon" type="image/x-icon" href={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.ico`}/>
+                    <meta name="twitter:image"
+                          content={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.png`}/>
+                    <link rel="shortcut icon" type="image/x-icon"
+                          href={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.ico`}/>
                     <meta name="geo.region" content="US"/>
                     <link rel="canonical" href={`https://usasport.live/watch/${group}/${name}`}/>
                     <title>{currentChannel?.name}</title>
@@ -115,14 +104,26 @@ function StreamChannel() {
                             <h1>
                                 {currentChannel?.name}
                             </h1>
-                            {currentChannel && currentChannel.startTime ?
-                                <div className="mb-3">Start
-                                    Time: {moment.utc(currentChannel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} {moment.tz.guess()}</div> : ''
+                            {currentChannel && currentChannel?.startTime ?
+                                <p className="mb-3">
+                                    Start Time: {moment.utc(currentChannel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} {moment.tz.guess()}
+                                </p>
+                                : ''
                             }
-                            <ClapprPlayer
-                                source={sourceLive} img={currentChannel && logo}
-                                height={isMobile || isTablet ? "30vh" : "50vh"}
-                            />
+                            {currentChannel && !currentChannel?.isLive ?
+                                <p className="mb-3 bg-warning text-dark">
+                                    Get ready! The live stream will go live 1 hour before the match kicks off. Don’t miss it!
+                                </p>
+                                : ''}
+                            {currentChannel?.isLive ? (
+                                <ClapprPlayer
+                                    source={sourceLive} img={currentChannel && logo}
+                                    height={isMobile || isTablet ? "30vh" : "50vh"}
+                                />
+                            ) : (
+                                <Image className="img-bg-dark" src={currentChannel && logo} width="100%" height="100%"/>
+                            )}
+
                         </div>
                     </Col>
 
@@ -163,7 +164,7 @@ function StreamChannel() {
                                             <div className="d-flex text-dark align-items-center text-decoration-none">
                                                 <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
                                                    aria-hidden="true"></i>
-                                                <h4 className="channel-name mb-0">
+                                                <h4 className={channel === selectedChannel ? "channel-name mb-0 text-dark" : "channel-name mb-0"}>
                                                     {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
                                                 </h4>
                                             </div>

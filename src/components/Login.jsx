@@ -6,20 +6,20 @@ import { saveDataWithExpiry } from "../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const user = { username, password };
+        const user = { email, password };
 
         try {
             const response = await LoginAPI.login(user);
             if (!response.data) {
                 toast.error("Password is incorrect");
             } else {
-                saveDataWithExpiry("user", { username });
+                saveDataWithExpiry("user", { email });
                 navigate("/");
             }
         } catch (error) {
@@ -34,12 +34,12 @@ function Login() {
                     <h2 className="text-center mb-4 text-primary">Login</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label className="fw-bold">Username</Form.Label>
+                            <Form.Label className="fw-bold">Email</Form.Label>
                             <Form.Control
-                                type="text"
-                                placeholder="Enter username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                type="email"
+                                placeholder="Enter email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                                 className="p-2"
                             />

@@ -151,7 +151,7 @@ function ChannelManagement() {
                     rows={channels}
                     columns={columns}
                     initialState={{pagination: {paginationModel}}}
-                    pageSizeOptions={[5, 10]}
+                    pageSizeOptions={[5, 10, 20]}
                     checkboxSelection
                     sx={{border: 0.1}}
                 />

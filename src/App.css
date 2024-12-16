@@ -403,3 +403,7 @@ button {
   background-color: #f5e2e4 !important;/* Màu nền khi active */
   /*color: #fff; !* Màu chữ khi active *!*/
 }
+
+.img-bg-dark{
+    background-color: #343a40 !important;
+}

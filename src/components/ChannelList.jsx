@@ -6,17 +6,6 @@ import {toast} from "react-toastify";
 function ChannelList({channels, selectedChannel, readMore, onSendData}) {
     const navigate = useNavigate();
     const selectChannel = (channel) => {
-        if (!channel.isLive) {
-            toast.warn("Stream does not available");
-        } else {
-            if (onSendData) {
-                onSendData(channel);
-            } else {
-
-                navigate(`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}.html`);
-                window.scrollTo(0, 0);
-            }
-        }
         toast.warn("Get ready! The live stream will go live 1 hour before the match kicks off. Don’t miss it!");
     };
 
@@ -67,51 +56,33 @@ function ChannelList({channels, selectedChannel, readMore, onSendData}) {
                         <div className={`channel-list-wrapper`}>
                             <ListGroup variant="flush">
                                 {limitedItems.map((channel) => (
-                                    channel.isLive ?
-                                        (
-                                            <ListGroup.Item
-                                                action
-                                                key={channel.id}
-                                                active={channel === selectedChannel}
-                                                href={`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}-${channel.id}.html`}
-                                                className="d-flex justify-content-start align-items-center channel-item content-dark-mode"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <div
-                                                    className="d-flex text-dark align-items-center text-decoration-none news-line"
-                                                >
-                                                    <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
-                                                       aria-hidden="true"></i>
-                                                    <h4 className="channel-name mb-0 news-line">
-                                                        {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
-                                                    </h4>
-                                                </div>
-                                                <div className="live-icon-wrapper">
-                                                    <Image
-                                                        src={`${process.env.PUBLIC_URL}/live-icon.png`}
-                                                        fluid
-                                                        className="live-icon"
-                                                    />
-                                                </div>
-                                            </ListGroup.Item>
-                                        ) : (
-                                            <ListGroup.Item
-                                                action
-                                                key={channel.id}
-                                                onClick={() => selectChannel(channel)}
-                                                className="d-flex justify-content-start align-items-center channel-item content-dark-mode news-line"
-                                            >
-                                                <div
-                                                    className="d-flex text-dark align-items-center text-decoration-none text-primary news-line"
-                                                >
-                                                    <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
-                                                       aria-hidden="true"></i>
-                                                    <h4 className="channel-name mb-0 news-line">
-                                                        {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
-                                                    </h4>
-                                                </div>
-                                            </ListGroup.Item>
-                                        )
+                                    <ListGroup.Item
+                                        action
+                                        key={channel.id}
+                                        active={channel === selectedChannel}
+                                        href={`/watch/${channel.group.replace(/\s+/g, "-").toLowerCase()}/${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}-${channel.id}.html`}
+                                        className="d-flex justify-content-start align-items-center channel-item content-dark-mode"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <div
+                                            className="d-flex text-dark align-items-center text-decoration-none news-line"
+                                        >
+                                            <i className="fa fa-angle-double-right mx-1 mx-md-2 mx-lg-3"
+                                               aria-hidden="true"></i>
+                                            <h4 className={channel === selectedChannel ? "channel-name mb-0 text-dark" : "channel-name mb-0 news-line"}>
+                                                {channel.name} {channel.startTime ? `: ${moment.utc(channel.startTime).local().format('YYYY/MM/DD, H:mm:ss A [UTC]Z z')} ${moment.tz.guess()}` : ''}
+                                            </h4>
+                                        </div>
+                                        <div className="live-icon-wrapper">
+                                            {channel.isLive && (
+                                                <Image
+                                                    src={`${process.env.PUBLIC_URL}/live-icon.png`}
+                                                    fluid
+                                                    className="live-icon"
+                                                />
+                                            )}
+                                        </div>
+                                    </ListGroup.Item>
                                 ))}
                             </ListGroup>
                         </div>
