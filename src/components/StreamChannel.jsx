@@ -22,6 +22,32 @@ function StreamChannel() {
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setTablet] = useState(false);
 
+    const filterObjectsTodayInClientTime = (objList) => {
+        // Lấy ngày hiện tại của client
+        const today = new Date();
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth();
+        const todayDate = today.getDate();
+
+        return objList.filter(obj => {
+            if (!obj.startTime) return false; // Bỏ qua nếu không có startTime
+
+            // Chuyển startTime từ UTC sang giờ client
+            const startTimeUTC = new Date(obj.startTime + "Z"); // "Z" để chỉ định UTC
+            const clientTime = new Date(startTimeUTC.toLocaleString("en-US", {timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone}));
+
+            // So sánh ngày của client
+            return (
+                clientTime.getFullYear() === todayYear &&
+                clientTime.getMonth() === todayMonth &&
+                clientTime.getDate() === todayDate
+            );
+        });
+    }
+
+    const channelsFiltered = filterObjectsTodayInClientTime(channels);
+
+
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
@@ -41,7 +67,7 @@ function StreamChannel() {
     }, []);
 
     useEffect(() => {
-        const channel = channels.find((channel) => `${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}-${channel.id}.html` === name);
+        const channel = channelsFiltered.find((channel) => `${channel.name.replace(/\s+/g, "-").replace("vs.", "vs").toLowerCase()}-${channel.id}.html` === name);
         if (channel) {
             setCurrentChannel(channel);
             setLogo(channel.logoUrl);
@@ -55,9 +81,9 @@ function StreamChannel() {
     }, [channels, name, navigate]);
 
     useEffect(() => {
-        if (channels) {
-            const channelsFilter = channels.filter((channel) => channel.group.replace(/\s+/g, "-").toLowerCase() === group);
-            const liveChannels = channels.filter((channel) => channel.isLive === true);
+        if (channelsFiltered) {
+            const channelsFilter = channelsFiltered.filter((channel) => channel.group.replace(/\s+/g, "-").toLowerCase() === group);
+            const liveChannels = channelsFiltered.filter((channel) => channel.isLive === true);
             setListChannels(channelsFilter);
             setLiveChannels(liveChannels);
         }

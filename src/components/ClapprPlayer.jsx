@@ -38,7 +38,12 @@ const ClapprPlayer = ({source, img = '', width = '100%', height = '70vh'}) => {
             width: width,
             height: height,
             disableErrorScreen: true,
-            poster: `${img}`
+            poster: `${img}`,
+            // xhr: {
+            //     headers: {
+            //         'Referer': 'https://usasport.live',
+            //     }
+            // }
         });
 
         player.on(Clappr.Events.PLAYER_READY, () => {

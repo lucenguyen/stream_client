@@ -9,7 +9,33 @@ import React, {useEffect, useState} from "react";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 
 function Home() {
-    const channels = useSelector((state) => state.channels).channels;
+    const channels = useSelector((state) => state.channels).channels
+
+    const filterObjectsTodayInClientTime = (objList) => {
+        // Lấy ngày hiện tại của client
+        const today = new Date();
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth();
+        const todayDate = today.getDate();
+
+        return objList.filter(obj => {
+            if (!obj.startTime) return false; // Bỏ qua nếu không có startTime
+
+            // Chuyển startTime từ UTC sang giờ client
+            const startTimeUTC = new Date(obj.startTime + "Z"); // "Z" để chỉ định UTC
+            const clientTime = new Date(startTimeUTC.toLocaleString("en-US", {timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone}));
+
+            // So sánh ngày của client
+            return (
+                clientTime.getFullYear() === todayYear &&
+                clientTime.getMonth() === todayMonth &&
+                clientTime.getDate() === todayDate
+            );
+        });
+    }
+
+    const channelsFilter = filterObjectsTodayInClientTime(channels);
+
     const [desktop, setDesktop] = useState(true);
     useEffect(() => {
         const handleResize = () => {
@@ -45,8 +71,10 @@ function Home() {
                     <meta name="twitter:title" content="USA Sport Live | Watch Live Sports"/>
                     <meta name="twitter:description"
                           content="Watch free streaming for NFL,NBA,MLB,UFC,Boxing and more - the top choice for free sport streaming worldwide"/>
-                    <meta name="twitter:image" content={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.png`}/>
-                    <link rel="shortcut icon" type="image/x-icon" href={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.ico`}/>
+                    <meta name="twitter:image"
+                          content={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.png`}/>
+                    <link rel="shortcut icon" type="image/x-icon"
+                          href={`https://usasport.live${process.env.PUBLIC_URL}/usa_sport.ico`}/>
                     <meta name="geo.region" content="US"/>
                     <title>USA Sport Live | Watch Live Sports</title>
                     <meta name="description"
@@ -65,7 +93,7 @@ function Home() {
                         {/*    ads*/}
                         {/*</div>*/}
                         <div className="m-lg-4" id="channel-list-section">
-                            <ChannelList channels={channels} readMore={true}/>
+                            <ChannelList channels={channelsFilter} readMore={true}/>
                         </div>
                     </Col>
 

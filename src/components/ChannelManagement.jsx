@@ -100,6 +100,7 @@ function ChannelManagement() {
             setSync(false);
         } catch (err) {
             toast.error("Failed to fetch sync channel.");
+            setSync(false);
         }
 
 
